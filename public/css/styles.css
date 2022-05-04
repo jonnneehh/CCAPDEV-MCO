@@ -8,9 +8,10 @@ body {
 .container {
     box-sizing: border-box;
     height: 100%;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
