@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
+
+/* TODO: fix colors */
+
+header {
+    position: fixed;
+    font-family: 'Varela Round', sans-serif;
+    background-color: rgba(250, 206, 167, 0.21);
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+.nav_bar {
+    height: 48px;
+    border: .8px solid black ;
+}
+
+.logo img {
+    height: 48px;
+    float: left;
+}
+
+.nav_btns {
+    float: right;
+    height: 48px;
+    display: flex;
+}
+
+.nav_btns a {
+    padding-top: 12px;
+    margin-right: 20px;
+    color: black;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.nav_btns a:hover {
+    color: rgba(26, 255, 255, 0.8);
+    transition: 0.2s ease all;
+}
