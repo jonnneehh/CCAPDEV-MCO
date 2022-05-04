@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
+
+/* TODO: fix colors */
+
+body {
+    background-color: rgba(250, 206, 167, 0.21);
+    height: 900px;
+}
+
+small {
+    display: block;
+    font-size: 12px;
+    padding-left: 2px;
+    color: rgba(230, 2, 2, 1)
+}
+
+.container {
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    width: 36em;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(156, 165, 244, 0.46);
+    border-radius: 10px;
+}
+
+.header_div h1 {
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    text-shadow: -1px 1px 0 black, 
+                 0 0 1px black;
+    font-size: 56px;
+    margin: 0.4em;
+}
+
+.form_div {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    height: 4.5em;
+    margin: .2em auto;
+    margin-top: 0;
+}
+
+.row label {
+    margin-bottom: -25px;
+}
+
+#button_div {
+    padding-top: 15px;
+    padding-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#button_div p {
+    font-size: 14px;
+}
+
+#button_div a {
+    color: rgba(243, 86, 63, 0.8);
+}
+
+#button_div a:hover {
+    color: rgba(26, 255, 255, 0.8);
+    transition: 0.2s all;
+}
+
+input {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    height: 32px;
+    width: 216px;
+    outline: 0;
+    border: 0;
+}
+
+#register, #login {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 16px;
+    width: 10em;
+    height: 3.5em;
+    border-radius: 5px;
+}
+
+#register:hover, #login:hover {
+    border-color: rgba(61, 180, 230, 0.35);
+    background-color: rgba(61, 180, 230, 0.35);
+    transition: 0.2s all;
+}

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
+
+body {
+    background-color: rgba(250, 206, 167, 0.21);
+    height: 900px;
+}
+
+.container {
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.box {
+    width: 800px;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.box h2 {
+    font-size: 36px;
+    font-family: 'Varela Round', sans-serif;
+    color: white;
+    text-shadow: -1px 1px 0 black, 
+                 0 0 1px black;
+}
+
+.col-1 {
+    background-color: rgba(156, 165, 244, 0.46);
+    padding: 50px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.col-1 span {
+    font-size: 16px;
+    font-family:'Poppins', sans-serif;
+}
+
+.col-2 {
+    background-color: rgba(118, 126, 190, 0.801);
+    font-family:  'Poppins', sans-serif;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.input_section {
+    padding-top: 50px;
+}
+
+.input_section input {
+    height: 54px;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    border-style: solid .5px;
+    outline: 0;
+}
+
+.input_section label {
+    position: absolute;
+    margin-left: 4px;
+    font-size: 12px;
+}
+
+.button_section {
+    transform: translateY(30px)
+}
+
+.button_section button {
+    width: 156px;
+    height: 36px;
+    float: right;
+    border-radius: 5px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 16px;
+}
+
+.button_section button:hover {
+    border-color: rgba(121, 215, 255, 0.644);
+    background-color: rgba(121, 215, 255, 0.644);
+    transition: 0.2s all;
+}

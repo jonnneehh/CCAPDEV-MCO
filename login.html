@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="public/css/login-reg.css"/>
+        <link rel="stylesheet" type="text/css" href="public/css/nav.css"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script defer src="public/js/login.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="nav_bar">
+                <div class="logo">
+                    <a href="homepage.html"><img src="public/css/images/sampleLogo.png"/></a>
+                </div>
+                <div class="nav_btns">
+                    <a href="register.html">SIGN UP</a>
+                    <a href="login.html">LOG IN</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="box">
+                <div class="header_div">
+                    <h1>LOGIN</h1>
+                </div>
+    
+                <form id="login_form">
+                    <div class="form_div">
+                        <div class="row" id="user_div">
+                            <label for="user">Username</label> <br>
+                            <input type="text" name="user" id="user"/>
+                            <small id="userError"></small>
+                        </div>
+                        <div class="row" id="pword_div">
+                            <label for="pword">Password</label> <br>
+                            <input type="password" name="pword" id="pword"/>
+                            <small id="pwordError"></small>
+                        </div>
+                        <div class="row" id="button_div">
+                            <button type="submit" id="login"><b>SIGN IN</b></button>
+                            <p>Don't have an account? <a href="register.html">Sign up here.</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
