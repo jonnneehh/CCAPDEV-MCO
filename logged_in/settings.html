@@ -22,17 +22,48 @@
         </header>
 
         <div class="container">
-            <div class="box">
+            <div class="box" id="peepo_account">
                 <div class="col-1">
-                    <h2>Display Name</h2>
-                    <span>Your display name is used by users
-                            to find and identify you throughout 4peepo.
+                    <h2>Sign-In Details</h2>
+                    <span>Your username and password are used to access
+                        your account.
                     </span>
                 </div>
                 <div class="col-2">
                     <div class="input_section">
-                        <label for="idname">Display Name</label>
-                        <input type="text" id="dname" name="dname"></input>
+                        <label for="user">Username</label>
+                        <input type="text" id="user" name="user"></input>
+
+                        <p>Change Password</p>
+                        <label for="pword">Current Password</label>
+                        <input type="password" id="pword" name="pword"></input>
+
+                        <label for="newpword">New Password</label>
+                        <input type="password" id="newpword" name="newpword"></input>
+
+                        <label for="cnewpword">Confirm New Password</label>
+                        <input type="password" id="cnewpword" name="cnewpword"></input>
+                    </div>
+                    <div class="button_section">
+                        <button type="submit">SAVE CHANGES</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="box" id="information">
+                <div class="col-1">
+                    <h2>Information</h2>
+                    <span>This information will be shared with other users upon
+                        visiting your profile.
+                    </span>
+                </div>
+                <div class="col-2">
+                    <div class="input_section">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email"></input>
+
+                        <label for="about">About</label>
+                        <textarea maxlength="300" id="about"></textarea>
                     </div>
                     <div class="button_section">
                         <button type="submit">SAVE CHANGES</button>
@@ -40,7 +71,7 @@
                 </div>
             </div>
 
-            <!-- TODO: USERNAME, BIO, EMAIL, PASSWORD  -->
+            <!-- TODO: PROFILE PICTURE -->
 
         </div>
     </body>
