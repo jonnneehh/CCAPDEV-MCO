@@ -13,7 +13,7 @@ header {
 
 .nav_bar {
     height: 48px;
-    border: .8px solid black ;
+    border-bottom: .8px solid black ;
 }
 
 .logo img {

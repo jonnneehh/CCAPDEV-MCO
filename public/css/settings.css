@@ -119,3 +119,9 @@ body {
     resize: none;
     padding-top: 1rem;
 }
+
+#displayphoto {
+    height: 150px;
+    width: 150px;
+    border: black;
+}
