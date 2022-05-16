@@ -1,0 +1,9 @@
+.posts {
+    border: solid black;
+    height: 500px;
+    width: 250px;
+    margin: auto;
+    margin-top: 3rem;
+    display: flex;
+    padding: 5px;
+}   

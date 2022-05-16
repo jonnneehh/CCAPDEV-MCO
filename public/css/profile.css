@@ -1,0 +1,9 @@
+#profile_information{
+    border-bottom: solid black;
+    width: 80%;
+    height: 200px;
+    margin:auto;
+    margin-top: 3rem;
+    
+    background-color:rgb(209, 209, 209);
+}
