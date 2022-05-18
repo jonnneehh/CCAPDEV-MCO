@@ -14,6 +14,7 @@
     width:20%;
 }
 
+/*This bugs out if you zoom in*/
 #displayphoto{
     height: 250px;
     width: 250px;
@@ -52,7 +53,11 @@
     background-color: transparent;
     border: 1px solid black;
     font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
     text-decoration: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 #editprofile:visited{
@@ -61,6 +66,19 @@
 }
 #editprofile:hover{
     background-color: rgba(19, 10, 10, 0.199);
+}
+
+.interactables>input[type="button"]{
+    width: 100px;
+    height: 50px;
+    margin: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: transparent;
+    border: 1px solid black;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+    display: none; /*Hides the button*/
 }
 
 .statistics>p{
