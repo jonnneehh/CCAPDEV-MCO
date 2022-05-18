@@ -64,13 +64,13 @@ div.comment-card{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding: 5px 5px;
+	padding: 5px 5px 0px;
 }
 
 div.comment-action {
 	gap: 0.5rem;
-	padding: 5px 0px 5px 45px;
-	margin: 10px;
+	margin-right: 15px;
+	margin-bottom: 5px;
 	display: flex;
 	justify-content: right;
 	align-items: center;
@@ -79,6 +79,11 @@ div.comment-action {
 div.comment-desc {
 	padding-left: 45px;
 	display: flex;
+}
+
+div.comment-container {
+	padding-left: 16px;
+	padding-right: 16px;
 }
 
 span.likes{
@@ -93,9 +98,52 @@ span.comment-likes{
 #add-comment {
 	width: 100%;
 	height: 30px;
-	padding: 5px;
+	padding: 5px 5px 0px 5px;
+	border: none;
+	border-left: 2px;
+	border-right: 2px;
+	border-bottom: 2px solid #aaa;
 	box-sizing: border-box;
-	resize: vertical;
+	margin-bottom: 10px;
+	outline: none;
+	resize: none;
+}
+
+button {
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	padding: 5px 5px;
+	cursor: pointer;
+}
+
+div.dropdown {
+	display: inline-block;
+}
+
+div.dropdown-menu {
+	display: none;
+	position: absolute;
+	background-color: #fafafa;
+	min-width: 120px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+.dropdown-menu a{
+	color: black;
+	padding: 5px 16px 5px;
+	display: block;
+	text-decoration: none;
+}
+
+.dropdown:hover .dropdown-menu{
+	display: block;
+}
+
+.dropdown-menu a:hover {
+	background-color: #ddd;
 }
 
 .user-icon {
