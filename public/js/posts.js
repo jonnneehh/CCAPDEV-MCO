@@ -1,4 +1,14 @@
 $(document).ready(()=>{
+
+    $(".post-container").each(function (i){
+        $(this).clone().attr('id', i).appendTo("body");
+        $(this).remove();
+    })
+
+    $(".post-container").each(function (i){
+        
+    })
+
     $("#addcomment").click(()=>{
         var comment = $("#add-comment").val();
         var user = "Anjit243"
@@ -9,8 +19,12 @@ $(document).ready(()=>{
         }
         
         $("#add-comment").val("");
-
+        
         addComment(comment, user, iconsrc);
+
+        function checkForFilledTextbox(){
+            
+        }
 
         //Will be a problem if we change the layout of our comment section
         function addComment(comment, user, iconsrc){
