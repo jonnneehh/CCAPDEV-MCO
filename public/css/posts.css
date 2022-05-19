@@ -167,6 +167,12 @@ div.dropdown-menu {
 	display: block;
 }
 
+.comment-action i:hover, .actions i:hover {
+	cursor: pointer;
+	opacity: 60%;
+}
+
+
 .dropdown-menu a:hover {
 	background-color: #ddd;
 }
