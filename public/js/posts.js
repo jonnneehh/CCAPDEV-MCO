@@ -14,6 +14,10 @@ $(document).ready(()=>{
         var user = "Anjit243"
         var iconsrc = "images/u-profile.png";
         
+        var postid = $('#addcomment').parents("post-container").attr("id");
+        
+        console.log($(this).attr("id"));
+
         if(comment == ""){
             return;
         }
@@ -21,10 +25,6 @@ $(document).ready(()=>{
         $("#add-comment").val("");
         
         addComment(comment, user, iconsrc);
-
-        function checkForFilledTextbox(){
-            
-        }
 
         //Will be a problem if we change the layout of our comment section
         function addComment(comment, user, iconsrc){
