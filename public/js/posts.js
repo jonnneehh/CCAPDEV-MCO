@@ -23,20 +23,20 @@ $(document).ready(()=>{
         //Will be a problem if we change the layout of our comment section
         function addComment(comment, user, iconsrc, postid){
             $("#" + postid +" .comments-section").append(
-                '<div class="first-tier">' +
-					'<div class=\"comment-card\">' +
-						'<img class=\"comment-icon\" src='+ iconsrc +'>' +
-						'<span class=\"user-handle">'+ user +'</h3>' +	
-					'</div>' +	
-					'<div class=\"comment-desc\">' +
-						'<span>'+ comment +'</span>' +
-					'</div>' +
-					'<div class=\"comment-action\">' +
-						'<i class=\"fa-solid fa-chevron-up fa-lg\"></i>' +
-						'<span class=\"comment-likes\">0</span>' +
-						'<i class=\"fa-solid fa-chevron-down fa-lg\"></i>' +
-						'<i class=\"fa-solid fa-comments fa-lg\"></i>' +
-					'</div>' +
+                '<div class="first-tier">'+
+					'<div class="comment-card">'+
+						'<img class="comment-icon" src="'+iconsrc+'">'+
+						'<span class="user-handle">'+user+'</h3>'+
+					'</div>'+
+					'<div class="comment-desc">'+
+						'<span>'+comment+'</span>'+
+					'</div>'+
+					'<div class="comment-action">'+
+						'<span class="upvote"><i class="fa-solid fa-chevron-up fa-lg"></i></span>'+
+						'<span class="likes">0</span>'+
+						'<span class="downvote"><i class="fa-solid fa-chevron-down fa-lg"></i></span>'+
+						'<span class="comment"><i class="fa-solid fa-comments fa-lg"></i></span>'+
+					'</div>'+
 				'</div>'
             );
         }
@@ -104,5 +104,9 @@ $(document).ready(()=>{
             var like = $(downvote).siblings('.likes').text();
             $(downvote).siblings('.likes').text(parseInt(like) - 1);
         }
+    })
+
+    $(".deletepost").click(function(){
+        $(this).parents(".post-container").remove();
     })
 })
