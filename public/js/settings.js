@@ -25,7 +25,8 @@ $(document).ready(function () {
         about.val("");
     })
 
-    $('#save_displayphoto').click(()=>{
-       
+    $("#dp_upload").change(function (event) { 
+         let x = URL.createObjectURL(event.target.files[0])
+         $("#displayphoto").attr("src", x)
     })
 })
