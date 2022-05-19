@@ -5,18 +5,13 @@ $(document).ready(()=>{
         $(this).remove();
     })
 
-    $(".post-container").each(function (i){
-        
-    })
-
     $("#addcomment").click(()=>{
         var comment = $("#add-comment").val();
         var user = "Anjit243"
         var iconsrc = "images/u-profile.png";
         
-        var postid = $('#addcomment').parents("post-container").attr("id");
-        
-        console.log($(this).attr("id"));
+        var postid = $('#addcomment').closest(".post-container").attr("id");
+        console.log(postid);
 
         if(comment == ""){
             return;
@@ -24,11 +19,11 @@ $(document).ready(()=>{
         
         $("#add-comment").val("");
         
-        addComment(comment, user, iconsrc);
+        addComment(comment, user, iconsrc, postid);
 
         //Will be a problem if we change the layout of our comment section
-        function addComment(comment, user, iconsrc){
-            $(".comments-section").append(
+        function addComment(comment, user, iconsrc, postid){
+            $("#" + postid +" .comments-section").append(
                 '<div class="first-tier">' +
 					'<div class=\"comment-card\">' +
 						'<img class=\"comment-icon\" src='+ iconsrc +'>' +
