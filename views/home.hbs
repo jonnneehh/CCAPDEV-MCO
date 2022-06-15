@@ -1,0 +1,15 @@
+<link rel ="stylesheet" type="text/css" href="/css/styles.css">
+<link rel ="stylesheet" type="text/css" href="/css/homepage.css">
+<link rel ="stylesheet" type="text/css" href="/css/posts.css">
+<script defer src="/js/homepage.js"></script>
+
+<!-- TODO: see nav.hbs for instructions -->
+{{> nav}}
+
+<!-- TODO: SHOW MODAL AND SCREEN_BLOCK ONLY WHEN USER IS NOT LOGGED IN! -->
+{{> modal}}
+
+<br> <br>
+{{#each posts}}
+    {{> post}}
+{{/each}}
