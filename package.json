@@ -2,6 +2,7 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
     "mongodb": "^4.7.0",
     "mongoose": "^6.3.8"
   },
@@ -25,5 +26,6 @@
   "bugs": {
     "url": "https://github.com/jonnneehh/CCAPDEV-MCO/issues"
   },
+  "type": "module",
   "homepage": "https://github.com/jonnneehh/CCAPDEV-MCO#readme"
 }
