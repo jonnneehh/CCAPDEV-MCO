@@ -8,8 +8,6 @@ $(document).ready(function () {
         setBoxDefault(user)
     })
 
-    
-
     pword.focus(function (e) {
         e.preventDefault()
         setBoxDefault(pword)
@@ -31,7 +29,6 @@ $(document).ready(function () {
         }
     }
 
-
     function getResult() {
         let username = user.val().trim()
         let password = pword.val().trim()
@@ -39,18 +36,20 @@ $(document).ready(function () {
 
         // TODO: ADD 5 SAMPLE USERS
         
-        // sample 1
-        if (username === 'sample1' && password === 'sample1') {
-            window.open("logged_in/homepage.html", "_self")
+        // sample 1s
+        if (username === 'sample' && password === '123') {
+            $.get('/home', (data, status)=>{
+                if(status == 'success') {
+                    console.log("Logged in succesful")
+                    window.location.href = "/home"
+                }
+                else console.log("Cannot log in.");
+            });
         }
     }
 
     function setBoxRed(input_field) {
         input_field.css("background-color", "rgba(255, 0, 0, 0.41)")
-    }
-
-    function setBoxGreen(input_field) {
-        input_field.css("background-color", "rgba(185, 247, 132, 0.85)")
     }
 
     function setBoxDefault(input_field) {

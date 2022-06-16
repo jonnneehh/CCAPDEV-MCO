@@ -1,7 +1,7 @@
-const controller = {
+const startController = {
     getIndex: function(req, res){
         res.render('login');
     }
 }
 
-export default controller;
+export default startController;
