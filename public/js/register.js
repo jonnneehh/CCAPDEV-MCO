@@ -13,16 +13,23 @@ $(document).ready(function () {
             setBoxDefault(user)
         },
         blur: function() {
-            if (user.val().trim() === '') {
-                setBoxRed(user)
-                $("#userError").text("Must not be empty.");
-                us = 0
-            }
-            else {
-                setBoxGreen(user)
-                $("#userError").empty();
-                us = 1
-            }
+            $.get("/findUser", {username: user.val().trim()}, function(data, status){
+                if (user.val().trim() === '') {
+                    setBoxRed(user)
+                    $("#userError").text("Must not be empty.");
+                    us = 0
+                }
+                else if(data){
+                    setBoxRed(user)
+                    $("#userError").text("Username is taken!");
+                    us = 0
+                }
+                else {
+                    setBoxGreen(user)
+                    $("#userError").empty();
+                    us = 1
+                }
+            })
         }
     })
 
@@ -54,7 +61,7 @@ $(document).ready(function () {
             setBoxDefault(pword)
         },
         blur: function() {
-            if (pword.val().trim() === '') {
+            if (pword.val() === '') {
                 setBoxRed(pword)
                 $("#pwordError").text("Must not be empty.")
                 pw = 0
@@ -72,12 +79,12 @@ $(document).ready(function () {
             setBoxDefault(cpword)
         },
         blur: function() {
-            if (cpword.val().trim() === '') {
+            if (cpword.val() === '') {
                 $("#cpwordError").text("Must not be empty.")
                 setBoxRed(cpword)
                 cpw = 0
             }
-            else if (pword.val().trim() !== cpword.val().trim()) {
+            else if (pword.val() !== cpword.val()) {
                 setBoxRed(cpword)
                 $("#cpwordError").text("Password does not match.")
                 cpw = 0
@@ -93,15 +100,38 @@ $(document).ready(function () {
 
     form.submit(function (e) { 
         e.preventDefault()
-        checkInputs()
-        getResult()
+        checkInputs() 
+        if(us && em && pw && cpw) getResult();
     })
 
     function getResult() {
-        if ((us && em && pw && cpw)) {
-            alert("Welcome, " + user.val().trim())
-            window.open("login.html", "_self")
+        var newuser = {
+            username: user.val().trim(),
+            email: email.val().trim(),
+            password: pword.val()
         }
+
+        $.get("/addUser", newuser, function(data, status){
+            if(status != 'success'){
+                console.log("Unable to register user...")
+                return;
+            }
+        })
+
+        $.get("/findUser", {username: user.val().trim()}, function(data, status){
+            if(status == 'success'){
+                alert("You have successfully registered");
+            }
+            else{
+                alert("Could not properly register user...");
+            }
+        })
+
+        $.get("/login", (data, status)=>{
+            if(status == 'success'){
+                window.location.href = "/login"
+            }
+        })
     }
 
     function checkInputs() {

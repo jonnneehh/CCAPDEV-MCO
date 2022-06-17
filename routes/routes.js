@@ -15,4 +15,9 @@ router.get('/login', registerCont.getLogin);
 
 router.get('/home', loginCont.getHome);
 
+router.get('/addUser', registerCont.addUser);
+router.get('/findUser', registerCont.findUser);
+
+router.get('/loginUser', loginCont.loginUser);
+
 export default router;

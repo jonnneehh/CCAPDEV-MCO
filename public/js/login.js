@@ -30,22 +30,25 @@ $(document).ready(function () {
     }
 
     function getResult() {
-        let username = user.val().trim()
-        let password = pword.val().trim()
-
-
-        // TODO: ADD 5 SAMPLE USERS
-        
-        // sample 1s
-        if (username === 'sample' && password === '123') {
-            $.get('/home', (data, status)=>{
-                if(status == 'success') {
-                    console.log("Logged in succesful")
-                    window.location.href = "/home"
-                }
-                else console.log("Cannot log in.");
-            });
+        var success = false;
+        var userdata = {
+            username: user.val().trim(),
+            password: pword.val()
         }
+        
+        $.get('/loginUser', userdata, (data, status)=>{
+            if(data){
+                $.get('/home', (data, status)=>{
+                    if(status == 'success') {
+                        window.location.href = "/home"
+                    }
+                    else console.log("Cannot log in.");
+                });
+            }
+            else alert("Cannot Login: Username or Password is Incorrect...");
+        })
+
+        console.log("Login status " + success);
     }
 
     function setBoxRed(input_field) {
