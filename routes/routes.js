@@ -17,6 +17,10 @@ router.get('/', cont.getIndex);
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", postController.getPost);
 
+router.get("/profile", profileController.getProfile);
+
+router.get("/settings", settingsController.getSettings);
+
 //router.get('/home', loginCont.getHome);
 router.get('/register', loginCont.getRegister);
 router.get('/loginUser', loginCont.loginUser);
