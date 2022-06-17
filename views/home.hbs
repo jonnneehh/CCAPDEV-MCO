@@ -1,0 +1,27 @@
+<link rel ="stylesheet" type="text/css" href="/css/homepage.css">
+<link rel ="stylesheet" type="text/css" href="/css/posts.css">
+<script src="https://kit.fontawesome.com/e8f282ef28.js" crossorigin="anonymous"></script>
+<script defer src="/js/homepage.js"></script>
+
+<!-- TODO: see nav.hbs for instructions -->
+{{> nav}}
+
+<!-- TODO: SHOW MODAL AND SCREEN_BLOCK ONLY WHEN USER IS NOT LOGGED IN! -->
+{{> modal}}
+
+<br> <br>
+
+<div id="addPostdiv">
+    <a href="/addpost"> POST A MEME </a>
+</div>
+
+<div id="posts">
+    {{#if posts}}
+        {{#each posts}}
+            {{> post}}
+        {{/each}}
+    {{else}}
+        <h1 style="text-align: center"> NO POSTS FOUND! </h1>
+    {{/if}}
+</div>
+
