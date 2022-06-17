@@ -10,6 +10,13 @@ $(document).ready(function () {
         e.preventDefault();
         $(".modal").hide();
         $(this).hide();
-    })
+    });
+    
+    // removing this will let you click the button which redirects you to /addpost
+    $("#addPostdiv").on("click", function (e) {
+        e.preventDefault();
+        $(".modal").show();
+        $(".screen_block").show()
+    });
     
 });
