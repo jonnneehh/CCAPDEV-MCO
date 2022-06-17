@@ -11,8 +11,8 @@ import registerCont from '../controllers/registerController.js'
 
 const router = Router();
 
-router.get('/favicon.ico', cont.getFavicon);
-router.get('/', cont.getIndex);
+router.get('/favicon.ico', controller.getFavicon);
+router.get('/', controller.getIndex);
 
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", postController.getPost);
