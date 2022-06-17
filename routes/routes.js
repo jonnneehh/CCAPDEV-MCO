@@ -1,23 +1,28 @@
 import { Router } from "express";
-import startCont from '../controllers/startController.js'
+import upload from "../models/upload.js";
+
+import controller from "../controllers/controller.js";
+import postController from "../controllers/postController.js";
+import settingsController from '../controllers/settingsController.js';
+import profileController from "../controllers/profileControllers.js";
+
 import loginCont from '../controllers/loginController.js'
 import registerCont from '../controllers/registerController.js'
-import homepageCont from '../controllers/homepageController.js'
-import settingsCont from '../controllers/settingsController.js'
-import postsCont from '../controllers/postsController.js'
-
 
 const router = Router();
 
-router.get('/', startCont.getIndex);
+router.get('/favicon.ico', cont.getFavicon);
+router.get('/', cont.getIndex);
+
+router.post("/addpost", upload.single("content"), postController.postPost);
+router.get("/addpost", postController.getPost);
+
+//router.get('/home', loginCont.getHome);
 router.get('/register', loginCont.getRegister);
+router.get('/loginUser', loginCont.loginUser);
+
 router.get('/login', registerCont.getLogin);
-
-router.get('/home', loginCont.getHome);
-
 router.get('/addUser', registerCont.addUser);
 router.get('/findUser', registerCont.findUser);
-
-router.get('/loginUser', loginCont.loginUser);
 
 export default router;
