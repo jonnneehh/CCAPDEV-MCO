@@ -38,9 +38,9 @@ $(document).ready(function () {
         
         $.get('/loginUser', userdata, (data, status)=>{
             if(data){
-                $.get('/home', (data, status)=>{
+                $.get('/', (data, status)=>{
                     if(status == 'success') {
-                        window.location.href = "/home"
+                        window.location.href = "/"
                     }
                     else console.log("Cannot log in.");
                 });
