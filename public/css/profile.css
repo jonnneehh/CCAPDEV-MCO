@@ -1,0 +1,109 @@
+body {
+    background-color: rgba(250, 206, 167, 0.21);
+}
+
+.container {
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.profile_information{
+    border-bottom: solid black;
+    width: 80%;
+    height: 250px;
+    margin:auto;
+    margin-top: 3rem;
+    display: flex;
+    justify-content: flex-start;
+    padding: 2rem;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.col_left{
+    width:20%;
+}
+
+/*This bugs out if you zoom in*/
+#displayphoto{
+    height: 250px;
+    width: 250px;
+}
+
+.col_right{
+    width:80%;
+}
+
+.interactables{
+    display:flex;
+    justify-content: flex-start;
+}
+
+.info_username{
+    margin: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.info_username>p{
+    font-size: 30px;
+}
+
+.statistics{
+    display:flex;
+    justify-content: flex-start;
+}
+
+#editprofile{
+    width: 100px;
+    height: 50px;
+    margin: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: transparent;
+    border: 1px solid black;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#editprofile:visited{
+    color:black;
+    text-decoration: none;
+}
+#editprofile:hover{
+    background-color: rgba(19, 10, 10, 0.199);
+}
+
+.interactables>input[type="button"]{
+    width: 100px;
+    height: 50px;
+    margin: 20px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: transparent;
+    border: 1px solid black;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 14px;
+    display: none; /*Hides the button*/
+}
+
+.statistics>p{
+    margin-top:auto;
+    margin-bottom:auto;
+    margin: 20px;
+}
+
+.biography{
+    margin-top:auto;
+    margin-bottom:auto;
+    margin: 20px;
+}
