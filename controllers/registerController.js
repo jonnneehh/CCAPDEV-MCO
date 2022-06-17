@@ -9,13 +9,11 @@ const registerController = {
     addUser : function(req, res){
         var user = {
             username: req.query.username,
+            email: req.query.email,
+            password: req.query.password,
             posts: [], 
             followers: [], 
             following: [], 
-            bio: '',
-            profilephoto: '',
-            email: req.query.email,
-            password: req.query.password
         }
 
         db.insertOne(User, user, (result)=>{
