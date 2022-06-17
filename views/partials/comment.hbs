@@ -1,0 +1,27 @@
+<!-- TODO: FIX REPLIES? OR REMOVE IF CANT! !-->
+<!-- TODO: FIX PROFILE PICTURE AND USERNAME !-->
+
+<div class="first-tier">
+    <div class="comment-card">
+        <img class="comment-icon" src="/images/comment1.jpg">
+        <span class="user-handle">{{username}}</h3>	
+    </div>
+    
+    <div class="comment-desc">
+        <span> {{comment_content}} </span>
+    </div>
+
+    <div class="comment-action">
+        <span class="upvote"><i class="fa-solid fa-chevron-up fa-lg"></i></span>
+        <span class="likes"> {{comment_likes}} </span>
+        <span class="downvote"><i class="fa-solid fa-chevron-down fa-lg"></i></span>
+        <span class="comment"><i class="fa-solid fa-comments fa-lg"></i></span>
+    </div>
+
+    {{#each replies}}
+        {{> reply}}
+    {{/each}}
+
+
+
+</div>
