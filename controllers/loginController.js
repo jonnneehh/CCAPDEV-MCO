@@ -2,14 +2,10 @@ import db from '../models/db.js';
 import User from '../models/UserSchema.js';
 
 const loginController = {
-    getRegister: function(req, res){
-        res.render('register');
+    getLogin: function(req, res){
+        res.render('login');
     },
-
-    getHome: function(req, res){
-        res.render('home');
-    },
-
+    
     loginUser : function(req, res){
         var user = {
             username: req.query.username,
