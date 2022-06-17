@@ -4,7 +4,7 @@ import upload from "../models/upload.js";
 import controller from "../controllers/controller.js";
 import postController from "../controllers/postController.js";
 import settingsController from '../controllers/settingsController.js';
-import profileController from "../controllers/profileControllers.js";
+import profileController from "../controllers/profileController.js";
 
 import loginCont from '../controllers/loginController.js'
 import registerCont from '../controllers/registerController.js'
