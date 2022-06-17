@@ -2,8 +2,8 @@ import db from '../models/db.js';
 import User from '../models/UserSchema.js';
 
 const registerController = {
-    getLogin : function(req, res){
-        res.render('login');
+    getRegister : function(req, res){
+        res.render('register');
     },
 
     addUser : function(req, res){
