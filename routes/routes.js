@@ -9,15 +9,17 @@ import postsCont from '../controllers/postsController.js'
 
 const router = Router();
 
-router.get('/', startCont.getIndex);
+//Navigation
+router.get('/', startCont.getIndex); //This shows login.hbs
 router.get('/register', loginCont.getRegister);
 router.get('/login', registerCont.getLogin);
 
-router.get('/home', loginCont.getHome);
-
+//For registering
 router.get('/addUser', registerCont.addUser);
 router.get('/findUser', registerCont.findUser);
 
+//For login
 router.get('/loginUser', loginCont.loginUser);
+router.get('/home', loginCont.getHome);
 
 export default router;
