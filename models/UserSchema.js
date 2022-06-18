@@ -32,9 +32,18 @@ const UserSchema = new mongoose.Schema({
         type: String,
         default: "Welcome to my profile!"
     },
-    posts: [Number], 
-    followers: [Number], 
-    following: [Number]
+    posts: {
+        type: [Number],
+        default: []
+    }, 
+    followers: {
+        type: [Number],
+        default: []
+    }, 
+    following: {
+        type: [Number],
+        default: []
+    }
 })
 
 const User = mongoose.model('User', UserSchema);
