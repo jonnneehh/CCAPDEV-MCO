@@ -60,11 +60,11 @@ small {
     margin-bottom: -25px;
 }
 
-#pword_div {
+#login_pword_div {
     height: 110px;
 }
 
-#pwordError {
+#login_pwordError {
     text-align: center;
     padding-top: 10px;
 }
