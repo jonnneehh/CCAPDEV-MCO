@@ -24,6 +24,9 @@ app.set("views", "./views");
 
 app.use(express.static(`public`));
 
+// Allows use of req.body
+app.use(express.urlencoded({extended: false}));
+
 app.use(`/`, routes);
 
 db.connect();
