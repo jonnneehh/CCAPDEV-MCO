@@ -60,9 +60,18 @@ small {
     margin-bottom: -25px;
 }
 
+#pword_div {
+    height: 110px;
+}
+
+#pwordError {
+    text-align: center;
+    padding-top: 10px;
+}
+
 #button_div {
-    padding-top: 15px;
-    padding-bottom: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
