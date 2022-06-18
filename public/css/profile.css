@@ -1,3 +1,18 @@
+body {
+    background-color: rgba(250, 206, 167, 0.21);
+}
+
+.container {
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
 .profile_information{
     border-bottom: solid black;
     width: 80%;

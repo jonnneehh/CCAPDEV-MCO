@@ -2,12 +2,12 @@ import db from "../models/db.js";
 import User from "../models/UserSchema.js";
 import Post from "../models/PostModel.js";
 
-const settingsController = {
+const profileController = {
     
-    getSettings: function (req, res) {
-        res.render("settings");
+    getProfile: function (req, res) {
+        res.render("profile");
     },
 
 }
 
-export default settingsController;
+export default profileController;

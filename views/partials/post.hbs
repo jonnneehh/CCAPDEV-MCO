@@ -2,29 +2,29 @@
 <!-- TODO: IMPLEMENT POST CONTENT! !-->
 <div class="post-container">
     <div class="post-header">
-        <img class="user-icon" src="/images/profile1.jpg">
+        <img class="user-icon" src="/uploads/{{posterDP}}">
         <div class="header-body">
             <div class="user-info">
-                <h2 class="username"> {{username}} </h2>
+                <h2 class="username"> {{poster}} </h2>
                 <button class="button"> Follow </button>
             </div>
         </div>
     </div>
-`   
+   
     <div class="description-card">
         <div class="post-description">
-            <span> {{post_caption}} </span>
+            <span> {{caption}} </span>
         </div>
     </div>
 
     <div class="post-content">
-        <img class="post-body" src="/images/meme1.jpg">
+        <img class="post-body" src="/uploads/{{content}}">
     </div>
 
     <div class="post-footer">
         <div class="actions">
             <span class="upvote"> <i class="fa-solid fa-chevron-up fa-2x"></i> </span>
-            <span class="likes"> {{post_likes}} </span>
+            <span class="likes"> {{postlikes}} </span>
             <span class="downvote"> <i class="fa-solid fa-chevron-down fa-2x"></i> </span>
             <span class="comment"> <i class="fa-solid fa-comments fa-2x"></i> </span>
         </div>

@@ -1,3 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
+
+body {
+    background-color: rgba(250, 206, 167, 0.21);
+}
+
+.container {
+    box-sizing: border-box;
+    height: 100%;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
 .posts {
     border: solid black;
     height: 500px;
@@ -12,13 +29,13 @@
     position: fixed;
     z-index: 99;
     width: 400px;
-    height: 80px;
+    height: 450px;
     top: 50%;
     left: 50%;
-    margin-top: -40px;
-    margin-left: -200px;
+    transform: translate(-50%, -50%);
     background-color: rgba(156, 165, 244, 1);
     display: none;
+    text-align: center;
 }
 
 .screen_block {
@@ -31,4 +48,32 @@
     background-color: black;
     opacity: 0.7;
     display: none;
+}
+
+#addPostdiv {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background-color: rgba(156, 165, 244, 0.46);
+    width: 600px;
+    height: 70px;
+    margin-top: 2rem;
+    border-radius: 16px;
+}
+
+#addPostdiv a {
+    position: static;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 56px;
+    font-weight: bold;
+    color: white;
+    text-shadow: -1px 1px 0 black, 
+                 0 0 1px black;
+    text-decoration: none;
+    line-height: normal;
+}
+
+#addPostdiv a:active {
+    color: white;
 }

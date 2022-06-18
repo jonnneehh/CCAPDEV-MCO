@@ -1,14 +1,15 @@
 <!-- TODO: FIX PROFILE PICTURE! -->
 
-<link rel="stylesheet" type="text/css" href="/css/styles.css"/>
 <link rel="stylesheet" type="text/css" href="/css/profile.css"/>
 <link rel="stylesheet" type="text/css" href="/css/posts.css"/>
 <script defer src="/js/posts.js"></script>
 <script src="https://kit.fontawesome.com/e8f282ef28.js" crossorigin="anonymous"></script>
 
+{{> nav}}
+
 <div class="profile_information">
     <div class="col_left">
-        <img id="displayphoto" src="/images/u-profile.png">
+        <img id="displayphoto" src="/uploads/placeholder.jpg">
     </div>
 
     <div class="col_right">
@@ -19,7 +20,7 @@
 
             <a href="/settings" id="editprofile"> Edit Profile </a>
             <input type="button" value="Follow" id="followbutton"/> <!-- hidden in profile.css -->
-            <input type="buton" value="Block" id="blockbutton"/> <!-- hidden in profile.css -->
+           <!-- <input type="button" value="Block" id="blockbutton"/>  hidden in profile.css -->
         </div>
 
         <div class="statistics">
@@ -34,6 +35,12 @@
     </div>
 </div>
 
-{{#each posts}}
-    {{> post}}
-{{/each}}
+<div id="posts">
+    {{#if posts}}
+        {{#each posts}}
+            {{> post}}
+        {{/each}}
+    {{else}}
+        <h1 style="text-align: center"> NO POSTS FOUND! </h1>
+    {{/if}}
+</div>
