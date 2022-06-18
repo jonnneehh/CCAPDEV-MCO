@@ -46,7 +46,7 @@ $(document).ready(function () {
                 });
             }
             //else alert("Cannot Login: Username or Password is Incorrect...");
-            $("#pwordError").text("Login Failed: Incorrect username or password.");
+            $("#login_pwordError").html("Login failed: <br>Incorrect username or password. ");
         })
 
         console.log("Login status " + success);
