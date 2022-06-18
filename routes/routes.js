@@ -21,12 +21,10 @@ router.get("/profile", profileController.getProfile);
 
 router.get("/settings", settingsController.getSettings);
 
-router.get('/register', loginCont.getRegister);
-
+router.get('/login', loginCont.getLogin);
 router.get('/loginUser', loginCont.loginUser);
-router.get('/home', loginCont.getHome);
 
-router.get('/login', registerCont.getLogin);
+router.get('/register', registerCont.getRegister);
 router.get('/addUser', registerCont.addUser);
 router.get('/findUser', registerCont.findUser);
 
