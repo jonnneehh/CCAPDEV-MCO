@@ -66,9 +66,16 @@ $(document).ready(function () {
                 $("#pwordError").text("Must not be empty.")
                 pw = 0
             }
+            else if (pword.val() !== cpword.val()) {
+                setBoxRed(cpword)
+                setBoxGreen(pword)
+                $("#cpwordError").text("Password does not match.")
+                pw = 1
+                cpw = 0
+            }
             else {
                 setBoxGreen(pword)
-                $("#pwordError").empty();
+                $("#pwordError").text("");
                 pw = 1
             }
         }
@@ -91,7 +98,7 @@ $(document).ready(function () {
             }
             else {
                 setBoxGreen(cpword)
-                $("#cpwordError").empty();
+                $("#cpwordError").text("");
                 cpw = 1
             }
     
