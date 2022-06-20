@@ -1,22 +1,21 @@
 $(document).ready(function () {
     const form = $("#login_form")
-    const user = $("#user")
-    const pword = $("#pword")
+    const user = $("#username")
+    const pword = $("#password")
 
-    user.focus(function (e) { 
-        e.preventDefault()
+    user.on("focus", function (e) { 
+        //e.preventDefault()
         setBoxDefault(user)
     })
 
-    pword.focus(function (e) {
-        e.preventDefault()
+    pword.on("focus", function (e) {
+        //e.preventDefault()
         setBoxDefault(pword)
     })
 
-    form.submit(function (e) { 
-        e.preventDefault()
+    form.on("submit", function (e) { 
         checkInputs()
-        getResult()
+        //getResult()
     })
 
     function checkInputs() {
@@ -36,7 +35,7 @@ $(document).ready(function () {
             password: pword.val()
         }
         
-        $.get('/loginUser', userdata, (data, status)=>{
+        /*$.get('/login', userdata, (data, status)=>{
             if(data){
                 $.get('/', (data, status)=>{
                     if(status == 'success') {
@@ -48,7 +47,7 @@ $(document).ready(function () {
             }
             //else alert("Cannot Login: Username or Password is Incorrect...");
             else $("#login_pwordError").html("Login failed: <br>Incorrect username or password. ");
-        })
+        }) */
 
         console.log("Login status " + success);
     }
