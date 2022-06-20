@@ -1,5 +1,6 @@
 import db from '../models/db.js';
 import User from '../models/UserSchema.js';
+import bcrypt from "bcrypt";
 
 const registerController = {
     getRegister : function(req, res){
@@ -7,15 +8,19 @@ const registerController = {
     },
     
     addUser : async function (req, res){
+
+        let hashedPassword = await bcrypt.hash(req.body.password, 10);
+
         let user = {
-            username: req.body.user,
+            username: req.body.username,
             email: req.body.email,
-            password: req.body.pword
+            password: hashedPassword
         }
 
         db.insertOne(User, user, function (result) {
             //console.log(result);
             if (result) {
+                req.flash("success_msg", "Registration successful. You may now login.");
                 res.redirect("/login");
             }
         })
