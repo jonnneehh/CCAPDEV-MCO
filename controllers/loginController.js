@@ -7,13 +7,23 @@ const loginController = {
         res.render('login');
     },
     
-    loginUser : function(req, res, next){
+    loginUser: function(req, res, next){
         passport.authenticate("local", {
             successRedirect: "/",
             failureRedirect: "/login",
             failureFlash: true
         })(req, res, next);
-    } 
+    },
+
+    logoutUser: function (req, res, next) {
+        req.logout(function (err) {
+            if (err)
+                return next(err);
+            else
+                req.flash("success_msg", "You are now logged out.");
+                res.redirect("/login");
+        });
+    }
     
 };
 
