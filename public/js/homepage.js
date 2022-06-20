@@ -12,7 +12,7 @@ $(document).ready(function () {
         $(this).hide();
     });
     
-    // removing this will let you click the button which redirects you to /addpost
+    
     $(".addPostdiv").on("click", function (e) {
         if (!($(".addPostdiv").attr("id"))) {
             e.preventDefault();
