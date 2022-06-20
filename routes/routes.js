@@ -20,13 +20,17 @@ router.get("/addpost", postController.getPost);
 router.get("/profile", profileController.getProfile);
 
 router.get("/settings", settingsController.getSettings);
+router.get("/changeUsername", settingsController.changeUsername);
+router.get("/changePassword", settingsController.changePassword);
+router.get("/changeEmail", settingsController.changeEmail);
+router.get("/changeAbout", settingsController.changeAbout);
+router.get("/checkPassword", settingsController.checkPassword);
 
-router.get('/register', loginCont.getRegister);
+router.get('/register', registerCont.getRegister);
+router.get('/login', loginCont.getLogin);
 
 router.get('/loginUser', loginCont.loginUser);
-router.get('/home', loginCont.getHome);
 
-router.get('/login', registerCont.getLogin);
 router.get('/addUser', registerCont.addUser);
 router.get('/findUser', registerCont.findUser);
 
