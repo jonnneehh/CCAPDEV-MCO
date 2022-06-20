@@ -3,17 +3,23 @@
 <script src="https://kit.fontawesome.com/e8f282ef28.js" crossorigin="anonymous"></script>
 <script defer src="/js/homepage.js"></script>
 
-<!-- TODO: see nav.hbs for instructions -->
 {{> nav}}
 
-<!-- TODO: SHOW MODAL AND SCREEN_BLOCK ONLY WHEN USER IS NOT LOGGED IN! -->
-{{> modal}}
+{{#unless user}}
+    {{> modal}}
+{{/unless}}
 
 <br> <br>
 
-<div id="addPostdiv">
-    <a href="/addpost"> POST A MEME </a>
-</div>
+{{#unless user}}
+    <div class="addPostdiv">
+        <a href="/addpost"> POST A MEME </a>
+    </div>
+{{else}}
+    <div class="addPostdiv" id="logged_in">
+        <a href="/addpost"> POST A MEME </a>
+    </div>
+{{/unless}}
 
 <div id="posts">
     {{#if posts}}
