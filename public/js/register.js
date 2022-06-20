@@ -1,8 +1,8 @@
 $(document).ready(function () {
     const form = $("#reg_form")
-    const user = $("#user")
+    const user = $("#username")
     const email = $("#email")
-    const pword = $("#pword")
+    const pword = $("#password")
     const cpword = $("#cpword")
 
     var us, em, pw, cpw
@@ -117,7 +117,7 @@ $(document).ready(function () {
         $.get("/findUser", {username: user.val().trim()}, function(data, status){
             if(status == 'success'){
                 console.log(data);
-                alert("You have successfully registered");
+                //alert("You have successfully registered");
             }
             else{
                 console.log("Unable to register user...");
