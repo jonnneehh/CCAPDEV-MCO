@@ -9,17 +9,19 @@
             <h1> LOGIN </h1> 
         </div>
 
-        <form id="login_form">
+        {{> message}}
+
+        <form id="login_form" action="/login" method="POST">
             <div class="form_div">
                 <div class="row" id="user_div">
                     <label for="user"> Username </label> <br>
-                    <input type="text" name="user" id="user"/>
+                    <input type="text" name="username" id="username"/>
                     <small id="userError"></small>
                 </div>
 
                 <div class="row" id="login_pword_div">
                     <label for="pword">Password</label> <br>
-                    <input type="password" name="pword" id="pword"/>
+                    <input type="password" name="password" id="password"/>
                     <small id="login_pwordError"></small>
                 </div>
 
