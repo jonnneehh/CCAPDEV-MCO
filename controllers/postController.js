@@ -8,7 +8,7 @@ const postController = {
         console.log(req.file);
         //console.log(req.body);
         let data = {
-           poster: req.user.username, //TODO: Change to username of currently logged in user
+           poster: req.user.username,
            caption: req.body.caption,
            content: req.file.filename
            //layout: false
