@@ -66,9 +66,16 @@ $(document).ready(function () {
                 $("#pwordError").text("Must not be empty.")
                 pw = 0
             }
+            else if (pword.val() !== cpword.val()) {
+                setBoxRed(cpword)
+                setBoxGreen(pword)
+                $("#cpwordError").text("Password does not match.")
+                pw = 1
+                cpw = 0
+            }
             else {
                 setBoxGreen(pword)
-                $("#pwordError").empty();
+                $("#pwordError").text("");
                 pw = 1
             }
         }
@@ -91,45 +98,30 @@ $(document).ready(function () {
             }
             else {
                 setBoxGreen(cpword)
-                $("#cpwordError").empty();
+                $("#cpwordError").text("");
                 cpw = 1
             }
     
         }
     }) 
 
-    form.submit(function (e) { 
-        e.preventDefault()
+    form.on("submit", function (e) { 
         checkInputs() 
         if(us && em && pw && cpw) getResult();
+        // Prevents the form from submitting if there are errors
+        else e.preventDefault();
     })
 
     function getResult() {
-        var newuser = {
-            username: user.val().trim(),
-            email: email.val().trim(),
-            password: pword.val()
-        }
-
-        $.get("/addUser", newuser, function(data, status){
-            if(status != 'success'){
-                console.log("Unable to register user...")
-                return;
-            }
-        })
 
         $.get("/findUser", {username: user.val().trim()}, function(data, status){
             if(status == 'success'){
+                console.log(data);
                 alert("You have successfully registered");
             }
             else{
+                console.log("Unable to register user...");
                 alert("Could not properly register user...");
-            }
-        })
-
-        $.get("/login", (data, status)=>{
-            if(status == 'success'){
-                window.location.href = "/login"
             }
         })
     }
@@ -154,9 +146,6 @@ $(document).ready(function () {
                 if (x.val().trim() !== pword.val().trim()) {
                     setBoxRed(x)
                 }
-            }
-            else {
-                setBoxGreen(x)
             }
             i++
         }

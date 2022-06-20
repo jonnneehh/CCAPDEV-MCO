@@ -5,19 +5,19 @@ const registerController = {
     getRegister : function(req, res){
         res.render('register');
     },
-
-    addUser : function(req, res){
-        var user = {
-            username: req.query.username,
-            email: req.query.email,
-            password: req.query.password,
-            posts: [], 
-            followers: [], 
-            following: [], 
+    
+    addUser : async function (req, res){
+        let user = {
+            username: req.body.user,
+            email: req.body.email,
+            password: req.body.pword
         }
 
-        db.insertOne(User, user, (result)=>{
-            console.log(result);
+        db.insertOne(User, user, function (result) {
+            //console.log(result);
+            if (result) {
+                res.redirect("/login");
+            }
         })
     },
 

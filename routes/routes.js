@@ -26,12 +26,11 @@ router.get("/changeEmail", settingsController.changeEmail);
 router.get("/changeAbout", settingsController.changeAbout);
 router.get("/checkPassword", settingsController.checkPassword);
 
-router.get('/register', registerCont.getRegister);
-router.get('/login', loginCont.getLogin);
+router.get("/login", loginCont.getLogin);
+router.get("/loginUser", loginCont.loginUser);
 
-router.get('/loginUser', loginCont.loginUser);
-
-router.get('/addUser', registerCont.addUser);
-router.get('/findUser', registerCont.findUser);
+router.get("/register", registerCont.getRegister);
+router.post("/register", registerCont.addUser);
+router.get("/findUser", registerCont.findUser);
 
 export default router;

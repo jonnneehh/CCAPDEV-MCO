@@ -40,12 +40,14 @@ $(document).ready(function () {
             if(data){
                 $.get('/', (data, status)=>{
                     if(status == 'success') {
+                        $("#login_pwordError").html("");
                         window.location.href = "/"
                     }
                     else console.log("Cannot log in.");
                 });
             }
-            else alert("Cannot Login: Username or Password is Incorrect...");
+            //else alert("Cannot Login: Username or Password is Incorrect...");
+            else $("#login_pwordError").html("Login failed: <br>Incorrect username or password. ");
         })
 
         console.log("Login status " + success);
