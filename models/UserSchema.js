@@ -43,6 +43,10 @@ const UserSchema = new mongoose.Schema({
     following: {
         type: [Number],
         default: []
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 })
 
