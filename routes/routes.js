@@ -1,5 +1,5 @@
 import { Router } from "express";
-import upload from "../models/upload.js";
+import upload from "../middlewares/upload.js";
 
 import controller from "../controllers/controller.js";
 import postController from "../controllers/postController.js";
@@ -26,8 +26,9 @@ router.get("/changeEmail", settingsController.changeEmail);
 router.get("/changeAbout", settingsController.changeAbout);
 router.get("/checkPassword", settingsController.checkPassword);
 
+
 router.get("/login", loginCont.getLogin);
-router.get("/loginUser", loginCont.loginUser);
+router.post("/login", loginCont.loginUser);
 
 router.get("/register", registerCont.getRegister);
 router.post("/register", registerCont.addUser);
