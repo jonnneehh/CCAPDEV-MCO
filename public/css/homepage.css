@@ -50,7 +50,7 @@ body {
     display: none;
 }
 
-#addPostdiv {
+.addPostdiv {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -62,7 +62,7 @@ body {
     border-radius: 16px;
 }
 
-#addPostdiv a {
+.addPostdiv a {
     position: static;
     font-family: 'Varela Round', sans-serif;
     font-size: 56px;
@@ -74,6 +74,6 @@ body {
     line-height: normal;
 }
 
-#addPostdiv a:active {
+.addPostdiv a:active {
     color: white;
 }
