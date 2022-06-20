@@ -1,7 +1,12 @@
 {{#if success_msg}}
-<p id="reg-success"> Registration successful. You may now login.</p>
+    <div id="reg-success">
+        {{success_msg}}
+    </div>
 {{/if}}
 
+
 {{#if error}}
-<p id="login-fail"> Login failed.</p>
+    <div id="login-fail">
+        {{error}}
+    </div>
 {{/if}}
