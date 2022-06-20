@@ -28,6 +28,7 @@ router.get("/checkPassword", settingsController.checkPassword);
 
 
 router.get("/login", loginCont.getLogin);
+router.get("/logout", loginCont.logoutUser);
 router.post("/login", loginCont.loginUser);
 
 router.get("/register", registerCont.getRegister);
