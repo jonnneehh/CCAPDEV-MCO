@@ -5,7 +5,7 @@ const url = process.env.DB_URL;
 const database = {
 
     connect: function () {
-        mongoose.connect(url, function(error) {
+        mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true}, function(error) {
             if(error) throw error;
             console.log('Connected to: ' + url);
         });
