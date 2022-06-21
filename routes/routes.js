@@ -26,7 +26,6 @@ router.get("/changeEmail", settingsController.changeEmail);
 router.get("/changeAbout", settingsController.changeAbout);
 router.get("/checkPassword", settingsController.checkPassword);
 
-
 router.get("/login", loginCont.getLogin);
 router.post("/login", loginCont.loginUser);
 
