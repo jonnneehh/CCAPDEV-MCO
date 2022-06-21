@@ -18,7 +18,7 @@ router.get('/', controller.getIndex);
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
 
-router.get("/profile", profileController.getProfile);
+router.get("/profile", auth.ensureAuthenticated, profileController.getProfile);
 
 router.get("/settings", auth.ensureAuthenticated, settingsController.getSettings);
 router.get("/changeUsername", settingsController.changeUsername);
