@@ -1,44 +1,26 @@
 $(document).ready(()=>{
-
-    $(".post-container").each(function (i){
-        $(this).clone().attr('id', i).appendTo("body");
-        $(this).remove();
-    })
-
     $("#addcomment").click(function(){
         var comment = $("#add-comment").val();
-        var user = "Anjit243"
         var iconsrc = "images/u-profile.png";
         
-        var postid = $(this).closest(".post-container").attr("id");
-
+        var commentdata = {
+            commentOwnerDP: iconsrc,
+            content: comment,
+            postOwner: $(this).closest(".post-container").attr("id")
+        }
+        
         if(comment == ""){
             return;
         }
         
         $("#add-comment").val("");
         
-        addComment(comment, user, iconsrc, postid);
+        addComment(commentdata);
 
-        //Will be a problem if we change the layout of our comment section
-        function addComment(comment, user, iconsrc, postid){
-            $("#" + postid +" .comments-section").append(
-                '<div class="first-tier">'+
-					'<div class="comment-card">'+
-						'<img class="comment-icon" src="'+iconsrc+'">'+
-						'<span class="user-handle">'+user+'</h3>'+
-					'</div>'+
-					'<div class="comment-desc">'+
-						'<span>'+comment+'</span>'+
-					'</div>'+
-					'<div class="comment-action">'+
-						'<span class="upvote"><i class="fa-solid fa-chevron-up fa-lg"></i></span>'+
-						'<span class="likes">0</span>'+
-						'<span class="downvote"><i class="fa-solid fa-chevron-down fa-lg"></i></span>'+
-						'<span class="comment"><i class="fa-solid fa-comments fa-lg"></i></span>'+
-					'</div>'+
-				'</div>'
-            );
+        function addComment(commentdata){
+            $.get('/addComment', commentdata, function(data, status){
+                $("#" + commentdata.postOwner +" .comments-section").append(data);
+            })
         }
     })
 
@@ -56,7 +38,6 @@ $(document).ready(()=>{
             $(this).siblings('.downvote').css("color", black);
             addLike(this)
         }
-
         if(color == black){
             addLike(this)
             $(this).css("color", blue)

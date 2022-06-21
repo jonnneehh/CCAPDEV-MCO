@@ -13,9 +13,12 @@ const database = {
 
     insertOne: function(model, doc, callback) {
         model.create(doc, function(error, result) {
-            if(error) return callback(false);
+            if(error) {
+                console.log(error);
+                return callback(false);
+            }
             console.log('Added ' + result);
-            return callback(true);
+            return callback(result);
         });
     },
 
@@ -39,6 +42,13 @@ const database = {
             if(error) return callback(false);
             return callback(result);
         });
+    },
+
+    findManyToJSON: function(model, query, projection, callback) {
+        model.find(query, projection).lean().exec(function (error, result) {
+            if(error) return callback(false);
+            return callback(result);
+        })
     },
 
     updateOne: function(model, filter, update, callback) {

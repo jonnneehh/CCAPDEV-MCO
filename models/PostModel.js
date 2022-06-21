@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
+import CommentsSchema from "../models/CommentsSchema.js"
 
 const PostSchema = new mongoose.Schema({
     poster: {
         type: String,
         required: true
     },
-
     posterDP: {
         type: String,
         default: "placeholder.jpg"
@@ -24,8 +24,8 @@ const PostSchema = new mongoose.Schema({
     postlikes: {
         type: Number,
         default: 0
-    }
-
+    },
+    comments: [mongoose.SchemaTypes.ObjectId]
 })
 
 const Post = mongoose.model("Post", PostSchema);

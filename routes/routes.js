@@ -17,6 +17,7 @@ router.get('/', controller.getIndex);
 
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
+router.get("/addComment", postController.addComment);
 
 router.get("/profile", profileController.getProfile);
 
