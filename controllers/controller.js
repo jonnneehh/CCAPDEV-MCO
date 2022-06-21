@@ -8,7 +8,6 @@ const controller = {
     getFavicon: function (req, res) {
         res.status(204);
     },
-    //TODO: Sort posts by date posted instead of reverse array
     getIndex: function (req, res) {
         // Returns array of Posts
         db.findMany(Post, {}, null, function (result) {

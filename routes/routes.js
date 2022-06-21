@@ -1,4 +1,5 @@
 import { Router } from "express";
+import auth from "../configs/auth.js";
 import upload from "../middlewares/upload.js";
 
 import controller from "../controllers/controller.js";
@@ -15,11 +16,11 @@ router.get('/favicon.ico', controller.getFavicon);
 router.get('/', controller.getIndex);
 
 router.post("/addpost", upload.single("content"), postController.postPost);
-router.get("/addpost", postController.getPost);
+router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
 
 router.get("/profile", profileController.getProfile);
 
-router.get("/settings", settingsController.getSettings);
+router.get("/settings", auth.ensureAuthenticated, settingsController.getSettings);
 router.get("/changeUsername", settingsController.changeUsername);
 router.get("/changePassword", settingsController.changePassword);
 router.get("/changeEmail", settingsController.changeEmail);
@@ -27,6 +28,7 @@ router.get("/changeAbout", settingsController.changeAbout);
 router.get("/checkPassword", settingsController.checkPassword);
 
 router.get("/login", loginCont.getLogin);
+router.get("/logout", auth.ensureAuthenticated, loginCont.logoutUser);
 router.post("/login", loginCont.loginUser);
 
 router.get("/register", registerCont.getRegister);
