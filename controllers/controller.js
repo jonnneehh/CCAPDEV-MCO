@@ -11,9 +11,6 @@ const controller = {
     },
 
     getIndex: function (req, res) {
-        // Returns array of Posts
-        Post.find().lean()
-
         db.findManyToJSON(Post, {}, null, async function (res_posts) {
             for(let post of res_posts){
                 var commentsdata = [];
@@ -25,7 +22,6 @@ const controller = {
             }
             // Reverses Posts array to show newer posts first
             res_posts.reverse();
-            console.log("AFTER res_posts: " + res_posts)
             res.render("home", {posts: res_posts})
         }) 
 
@@ -35,15 +31,6 @@ const controller = {
                     resolve(res_comment) 
                 })
             })
-        }
-
-        function isJson(str) {
-            try {
-                JSON.parse(str);
-            } catch (e) {
-                return false;
-            }
-            return true;
         }
     }
 }

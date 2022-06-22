@@ -36,24 +36,53 @@ $(document).ready(()=>{
         
         if(siblingcolor != black){
             $(this).siblings('.downvote').css("color", black);
-            addLike(this)
+            addUpvote(this)
         }
         if(color == black){
-            addLike(this)
+            addUpvote(this)
             $(this).css("color", blue)
         }
         else{
-            removeLike(this);
+            removeUpvote(this);
             $(this).css("color", black)
         }
 
-        function addLike(upvote){
+        function addUpvote(upvote){
             var like = $(upvote).siblings('.likes').text();
             $(upvote).siblings('.likes').text(parseInt(like) + 1);
-        }
-        function removeLike(upvote){
+
+            //Get the parent div of the upvote. This can either be a comment or post parent
+            var parent = getParent(upvote);
+            var isAPost = isPost(parent);
+
+            var likes = {
+                _id: parent.attr("id"),
+                likes: $(upvote).siblings('.likes').text(),
+                isPost: isAPost
+            }
+
+            console.log(likes);
+            
+            $.get("/addUpvote", likes, function(data, status){})
+        }   
+
+        function removeUpvote(upvote){
             var like = $(upvote).siblings('.likes').text();
             $(upvote).siblings('.likes').text(parseInt(like) - 1);
+
+            //Get the parent div of the upvote. This can either be a comment or post parent
+            var parent = getParent(upvote);
+            var isAPost = isPost(parent);
+
+            var likes = {
+                _id: parent.attr("id"),
+                likes: $(upvote).siblings('.likes').text(),
+                isPost: isAPost
+            }
+
+            console.log(likes);
+            
+            $.get("/removeUpvote", likes, function(data, status){})
         }
     })
 
@@ -65,29 +94,86 @@ $(document).ready(()=>{
         
         if(siblingcolor != black){
             $(this).siblings('.upvote').css("color", black);
-            removeLike(this);
+            addDownvote(this);
         }
 
         if(color == black){
-            removeLike(this)
+            addDownvote(this)
             $(this).css("color", red)
         }
         else{
-            addLike(this);
+            removeDownvote(this);
             $(this).css("color", black)
         }
 
-        function addLike(downvote){
+        function removeDownvote(downvote){
             var like = $(downvote).siblings('.likes').text();
             $(downvote).siblings('.likes').text(parseInt(like) + 1);
+
+            //Get the parent div of the upvote. This can either be a comment or post parent
+            var parent = getParent(downvote);
+            var isAPost = isPost(parent);
+
+            var likes = {
+                _id: parent.attr("id"),
+                likes: $(downvote).siblings('.likes').text(),
+                isPost: isAPost
+            }
+
+            console.log(likes);
+            
+            $.get("/removeDownvote", likes, function(data, status){})
         }
-        function removeLike(downvote){
+        
+        function addDownvote(downvote){
             var like = $(downvote).siblings('.likes').text();
             $(downvote).siblings('.likes').text(parseInt(like) - 1);
+
+            //Get the parent div of the upvote. This can either be a comment or post parent
+            var parent = getParent(downvote);
+            var isAPost = isPost(parent);
+
+            var likes = {
+                _id: parent.attr("id"),
+                likes: $(downvote).siblings('.likes').text(),
+                isPost: isAPost
+            }
+
+            console.log(likes);
+            
+            $.get("/addDownvote", likes, function(data, status){})
         }
     })
 
     $(".deletepost").click(function(){
         $(this).parents(".post-container").remove();
     })
+
+    function getParent(vote){
+        var parentPost = $(vote).parents(".post-container");
+        var parentComment = $(vote).parents(".first-tier");
+
+        if(parentComment.length > 0){
+            console.log(parentComment);
+            return parentComment;
+        }
+        else if(parentPost.length > 0){
+            console.log(parentPost);
+            return parentPost;
+        }
+        else{
+            console.log("Error, cannot find parent element");
+            return;
+        }
+    }
+
+    function isPost(parent){
+        if(parent.attr("class") == "post-container"){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
 })

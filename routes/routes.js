@@ -18,6 +18,10 @@ router.get('/', controller.getIndex);
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
 router.get("/addComment", postController.addComment);
+router.get("/addUpvote", postController.addUpvote);
+router.get("/removeUpvote", postController.removeUpvote);
+router.get("/addDownvote", postController.addDownvote);
+router.get("/removeDownvote", postController.removeDownvote);
 
 router.get("/profile", auth.ensureAuthenticated, profileController.getProfile);
 

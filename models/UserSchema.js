@@ -47,6 +47,22 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    upvotedPosts: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        default: []
+    },
+    downvotedPosts: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        default: []
+    },
+    upvotedComments: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        default: []
+    },
+    downvotedComments: {
+        type: [mongoose.SchemaTypes.ObjectId],
+        default: []
     }
 })
 
