@@ -9,14 +9,19 @@ const postController = {
         console.log(req.file);
         //console.log(req.body);
         let data = {
-            poster: req.user.username,
-            caption: req.body.caption,
-            content: req.file.filename
-            //layout: false
+           poster: req.user.username,
+           caption: req.body.caption, 
+           content: req.file.filename
+           //layout: false
         }
+        
         db.insertOne(Post, data, function (result) {
-            console.log(result);
-            res.redirect("/");
+            db.findOne(User, {username: req.user.username}, {}, function () {
+                db.updateOne(User, {username: req.user.username}, {$inc: {posts: 1}}, function () {
+                    console.log(result);
+                    res.redirect("/");
+                })
+            }) 
         })
     },
 
