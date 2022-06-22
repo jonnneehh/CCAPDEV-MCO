@@ -1,4 +1,4 @@
-$(document).ready(()=>{
+$(document).ready(function(){
     $("#addcomment").click(function(){
         var comment = $("#add-comment").val();
         var iconsrc = "images/u-profile.png";
@@ -6,7 +6,7 @@ $(document).ready(()=>{
         var commentdata = {
             commentOwnerDP: iconsrc,
             content: comment,
-            postOwner: $(this).closest(".post-container").attr("id")
+            postOwner: $(this).parents(".post-container").attr("id")
         }
         
         if(comment == ""){
@@ -15,6 +15,8 @@ $(document).ready(()=>{
         
         $("#add-comment").val("");
         
+        console.log(commentdata);
+
         addComment(commentdata);
 
         function addComment(commentdata){
@@ -25,6 +27,7 @@ $(document).ready(()=>{
     })
 
     $("#cancelcomment").click(function(){
+        console.log("The comment was cancelled");
         $("#add-comment").val("");
     })
 
