@@ -8,7 +8,7 @@
                 <a href="/register">SIGN UP</a>
                 <a href="/login">LOG IN</a>
             {{else}}
-                <a href="/profile">PROFILE</a>
+                <a href="/profile/{{user.username}}">PROFILE</a>
                 <a href="/settings">SETTINGS</a>
                 <a href="/logout">LOG OUT</a>
             {{/unless}}
