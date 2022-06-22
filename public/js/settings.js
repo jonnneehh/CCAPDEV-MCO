@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const sid_form = $("#signindetails-form")
     const user = $("#username")
-    const pword = $("#pword")
+    const pword = $("#password")
     const newpword = $("#newpword")
     const cnewpword = $("#cnewpword")
 
@@ -80,12 +80,15 @@ $(document).ready(function () {
         }
     })
 
-    sid_form.submit(function (e) {
-        e.preventDefault();
-        if(user.val().trim() !== '') changeUsername();
-        if(pword.val() !== '' && newpword.val() !== '' && cnewpword.val() !== '') changePassword();
-        clearSIDTextbox();
-    })
+    /*sid_form.submit(function (e) {
+        //e.preventDefault();
+        if(user.val().trim() !== '') 
+            changeUsername();
+        if(pword.val() !== '' && newpword.val() !== '' && cnewpword.val() !== '') 
+            changePassword();
+        
+            clearSIDTextbox();
+    }) 
 
     function changeUsername() {
         $.get('/changeUsername', {username: user.val().trim()}, function(data, status){
@@ -106,14 +109,14 @@ $(document).ready(function () {
                 alert("The password you have entered is incorrect");
             }
         })
-    }
+    } 
 
     function clearSIDTextbox(){
         user.val('');
         pword.val('');
         newpword.val('');
         cnewpword.val('');
-    }
+    } */
 
     //Change information functions (email and about)
     email.on({
