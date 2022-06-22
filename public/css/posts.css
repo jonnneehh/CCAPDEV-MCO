@@ -200,6 +200,7 @@ div.dropdown-menu {
 	color: #3897f0;
 	font-weight: 700;
 	text-align: center;
+	margin-top: 5px;
 }
 
 .comment-icon{
@@ -225,4 +226,14 @@ img.post-body {
 
 .link {
 	color: #003469;
+}
+
+.user-info a {
+	text-decoration: none;
+	color: black;
+}
+
+.user-info a:active {
+	text-decoration: none;
+	color: black;
 }

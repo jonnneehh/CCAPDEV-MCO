@@ -23,7 +23,7 @@ router.get("/removeUpvote", postController.removeUpvote);
 router.get("/addDownvote", postController.addDownvote);
 router.get("/removeDownvote", postController.removeDownvote);
 
-router.get("/profile", auth.ensureAuthenticated, profileController.getProfile);
+router.get("/profile/:username", auth.ensureAuthenticated, profileController.getUserProfile);
 
 router.get("/settings", auth.ensureAuthenticated, settingsController.getSettings);
 router.get("/changeUsername", settingsController.changeUsername);
@@ -32,9 +32,10 @@ router.get("/changeEmail", settingsController.changeEmail);
 router.get("/changeAbout", settingsController.changeAbout);
 router.get("/checkPassword", settingsController.checkPassword);
 
+
 router.get("/login", loginCont.getLogin);
-router.get("/logout", auth.ensureAuthenticated, loginCont.logoutUser);
 router.post("/login", loginCont.loginUser);
+router.get("/logout", auth.ensureAuthenticated, loginCont.logoutUser);
 
 router.get("/register", registerCont.getRegister);
 router.post("/register", registerCont.addUser);

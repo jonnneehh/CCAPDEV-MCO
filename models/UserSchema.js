@@ -33,16 +33,16 @@ const UserSchema = new mongoose.Schema({
         default: "Welcome to my profile!"
     },
     posts: {
-        type: [Number],
-        default: []
+        type: Number,
+        default: 0
     }, 
     followers: {
-        type: [Number],
-        default: []
+        type: Number,
+        default: 0
     }, 
     following: {
-        type: [Number],
-        default: []
+        type: Number,
+        default: 0
     },
     date: {
         type: Date,
