@@ -1,11 +1,11 @@
-<!-- TODO: IMPLEMENT PROFILE PICTURE! !-->
-<!-- TODO: IMPLEMENT POST CONTENT! !-->
 <div class="post-container" id="{{_id}}">
     <div class="post-header">
-        <img class="user-icon" src="/uploads/{{posterDP}}">
+
+        <a href="/profile/{{poster}}"><img class="user-icon" src="/uploads/{{posterDP}}"></a>
+
         <div class="header-body">
             <div class="user-info">
-                <h2 class="username"> {{poster}} </h2>
+                <a href="/profile/{{poster}}" class="username">{{poster}}</a> <br>
                 <button class="button"> Follow </button>
             </div>
         </div>
