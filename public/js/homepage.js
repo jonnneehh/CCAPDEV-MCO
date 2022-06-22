@@ -1,7 +1,9 @@
 $(document).ready(function () {
 
     $(".post-container").on("click", function (e) { 
-        e.preventDefault();
+        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) != "LOG OUT")
+            e.preventDefault();
+
         $("#interact_modal").show();
         $(".screen_block").show();
     });
@@ -11,7 +13,6 @@ $(document).ready(function () {
         $(".modal").hide();
         $(this).hide();
     });
-    
     
     $(".addPostdiv").on("click", function (e) {
         if (!($(".addPostdiv").attr("id"))) {
