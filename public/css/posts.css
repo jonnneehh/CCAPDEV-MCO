@@ -237,3 +237,12 @@ img.post-body {
 	text-decoration: none;
 	color: black;
 }
+
+.user-handle {
+	text-decoration: none;
+}
+
+.user-handle:active {
+	text-decoration: none;
+	color: black;
+}
