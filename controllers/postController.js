@@ -6,7 +6,7 @@ import Comment from "../models/CommentsSchema.js"
 const postController = {
 
     postPost: async function (req, res) {
-        console.log(req.file);
+        //console.log(req.file);
         //console.log(req.body);
         let data = {
            poster: req.user.username,
@@ -18,7 +18,7 @@ const postController = {
         db.insertOne(Post, data, function (result) {
             db.findOne(User, {username: req.user.username}, {}, function () {
                 db.updateOne(User, {username: req.user.username}, {$inc: {posts: 1}}, function () {
-                    console.log(result);
+                    //console.log(result);
                     res.redirect("/");
                 })
             }) 
