@@ -1,10 +1,7 @@
-<!-- TODO: FIX REPLIES? OR REMOVE IF CANT! !-->
-<!-- TODO: FIX PROFILE PICTURE AND USERNAME !-->
-
 <div class="first-tier" id="{{_id}}">
     <div class="comment-card">
-        <img class="comment-icon" src="{{commentOwnerDP}}">
-        <span class="user-handle">{{commentOwner}}</h3>	
+        <a href="/profile/{{commentOwner}}"><img class="comment-icon" src="/uploads/{{commentOwnerDP}}"></a>
+        <a class="user-handle" href="/profile/{{commentOwner}}">{{commentOwner}}</a>	
     </div>
     
     <div class="comment-desc">
