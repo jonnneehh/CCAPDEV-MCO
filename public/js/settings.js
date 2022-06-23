@@ -1,5 +1,4 @@
 $(document).ready(function () {
-    const sid_form = $("#signindetails-form")
     const user = $("#username")
     const pword = $("#password")
     const newpword = $("#newpword")
@@ -9,10 +8,12 @@ $(document).ready(function () {
     const email = $("#email")
     const about = $("#about")
 
-    const submit_SID = $("#save_signindetails");
+    const submit_username = $("#save-username");
+    const submit_password = $("#save-password");
     const submit_Info = $("#save_information");
 
-    submit_SID.prop('disabled', true);
+    submit_username.prop('disabled', true);
+    submit_password.prop('disabled', true);
     submit_Info.prop('disabled', true);
     newpword.prop('disabled', true)
     cnewpword.prop('disabled', true)
@@ -26,11 +27,11 @@ $(document).ready(function () {
             $.get("/findUser", {username: user.val().trim()}, function(data, status){
                 if(data){
                     setBoxRed(user)
-                    $("#save_signindetails").prop('disabled', true);
+                    $("#save-username").prop('disabled', true);
                 }
                 else {
                     setBoxDefault(user)
-                    $("#save_signindetails").prop('disabled', false);
+                    $("#save-username").prop('disabled', false);
                 }
             })
         }
@@ -44,6 +45,7 @@ $(document).ready(function () {
             if(pword.val() != ''){
                 newpword.prop('disabled', false)
                 cnewpword.prop('disabled', false)
+
             }
         }
     }) 
@@ -55,11 +57,11 @@ $(document).ready(function () {
         blur: function() {
             if (newpword.val() == '') {
                 setBoxRed(newpword)
-                $("#save_signindetails").prop('disabled', true);
+                $("#save-password").prop('disabled', true);
             }
             else {
                 setBoxDefault(newpword)
-                $("#save_signindetails").prop('disabled', false);
+                $("#save-password").prop('disabled', false);
             }
         }
     }) 
@@ -79,44 +81,6 @@ $(document).ready(function () {
             }
         }
     })
-
-    /*sid_form.submit(function (e) {
-        //e.preventDefault();
-        if(user.val().trim() !== '') 
-            changeUsername();
-        if(pword.val() !== '' && newpword.val() !== '' && cnewpword.val() !== '') 
-            changePassword();
-        
-            clearSIDTextbox();
-    }) 
-
-    function changeUsername() {
-        $.get('/changeUsername', {username: user.val().trim()}, function(data, status){
-            if(data) alert("Your username was succesfully changed to: " + data.username)
-            else alert("Error: Could not change your username");
-        })
-    }
-
-    function changePassword(){
-        $.get('/checkPassword', {password: pword.val()}, function(data, status){
-            if(data){
-                $.get('/changePassword', {password: newpword.val()}, function(data, status){
-                    if(data) alert("Your password was successfully changed!");
-                    else alert("Error: Could not change your password");
-                })
-            }
-            else{
-                alert("The password you have entered is incorrect");
-            }
-        })
-    } 
-
-    function clearSIDTextbox(){
-        user.val('');
-        pword.val('');
-        newpword.val('');
-        cnewpword.val('');
-    } */
 
     //Change information functions (email and about)
     email.on({
@@ -153,8 +117,10 @@ $(document).ready(function () {
 
     info_form.submit(function(e){
         e.preventDefault();
-        if(email.val().trim() != '') changeEmail()
-        if(about.val() != '') changeAbout()
+        if (email.val().trim() != '') 
+            changeEmail()
+        if (about.val() != '') 
+            changeAbout()
         clearInfoTextbox();
     })
 
