@@ -14,28 +14,39 @@
         </div>
 
         <div class="col-2">
-            <!-- TODO: DISABLE SUBMIT BUTTON IF USERNAME/PASSWORD EITHER LESS THAN 3 CHARS OR DID NOT CHANGE! -->
-            <!-- IF USERNAME HAS NO INPUT, DONT MAKE ANY CHANGES TO USERNAME! SAME WITH PASSWORD -->
-            <form id="signindetails-form" method="POST" action="/settings">
                 <div class="input_section">
-                    <p> Change Username </p>
-                    <label for="username"> Username </label>
-                    <input type="text" id="username" name="username"/>
+                    <div id="username-section">
+                        <form id="username-form" method="POST" action="/username">
+                            <p> Change Username </p>
+                            <label for="username"> Username </label>
+                            <input type="text" id="username" name="username"/>
 
-                    <p> Change Password </p>
-                    <label for="pword"> Current Password </label>
-                    <input type="password" id="password" name="password"/>
+                            <div class="button_section" id="username-button">
+                                <button type="submit" id="save-username"> SAVE CHANGES </button>
+                            </div>
+                        </form>
+                    </div>
 
-                    <label for="newpword"> New Password </label>
-                    <input type="password" id="newpword" name="newpword"/>
+                    <div id="password-section">
+                        <form id="password-form" method="POST" action="/password">
+                            <p> Change Password </p>
+                            <label for="pword"> Current Password </label>
+                            <input type="password" id="password" name="password"/>
 
-                    <label for="cnewpword"> Confirm New Password </label>
-                    <input type="password" id="cnewpword" name="cnewpword"/>
+                            <label for="newpword"> New Password </label>
+                            <input type="password" id="newpword" name="newpword"/>
+
+                            <label for="cnewpword"> Confirm New Password </label>
+                            <input type="password" id="cnewpword" name="cnewpword"/>
+
+                            <div class="button_section">
+                                <button type="submit" id="save-password"> SAVE CHANGES </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 
-                <div class="button_section">
-                    <button type="submit" id="save_signindetails"> SAVE CHANGES </button>
-                </div>
+                
             </form>
         </div>
     </div>
@@ -72,13 +83,13 @@
         </div>
 
         <div class="col-2">
-            <form id="dp_form" action="/settings" method="POST" enctype="multipart/form-data">
+            <form id="dp_form" action="/photo" method="POST" enctype="multipart/form-data">
                 <div class="display_info">
                     <img id="displayphoto">
                 </div>
                 
                 <div class="input_section">
-                    <input id="dp_upload" type="file" name="profilephoto" accept="image/png, image/jpg, image/jpeg, image/gif"/>
+                    <input id="dp_upload" type="file" name="profilephoto" accept="image/png, image/jpg, image/jpeg, image/gif" required/>
                 </div>
 
                 <div class="button_section">
