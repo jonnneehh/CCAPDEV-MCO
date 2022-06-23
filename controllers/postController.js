@@ -32,7 +32,7 @@ const postController = {
     addComment: function (req, res) {
         var commentdata = {
             commentOwner: req.user.username,
-            commentOwnerDP: req.query.commentOwnerDP,
+            commentOwnerDP: req.user.profilephoto,
             content: req.query.content,
             postOwner: req.query.postOwner
         }
@@ -382,20 +382,3 @@ const postController = {
 }
 
 export default postController;
-
-/*
-    let post = new Post({
-    poster: "Kevin", // TODO: Change this to username of currently logged in user
-    caption: req.body.caption,
-    content: req.body.content
-});
-
-
-try {
-    post = await post.save();
-    res.redirect("/");
-    //console.log(post.id);
-} catch (err) {
-    console.log(err);
-} 
-*/
