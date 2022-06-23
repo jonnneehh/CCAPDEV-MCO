@@ -26,13 +26,11 @@ router.get("/removeDownvote", postController.removeDownvote);
 router.get("/profile/:username", auth.ensureAuthenticated, profileController.getUserProfile);
 
 router.get("/settings", auth.ensureAuthenticated, settingsController.getSettings);
-router.post("/settings", auth.ensureAuthenticated, settingsController.changeUsername);
-router.post("/settings", auth.ensureAuthenticated, settingsController.changePassword);
+router.post("/username", auth.ensureAuthenticated, settingsController.changeUsername);
+router.post("/password", auth.ensureAuthenticated, settingsController.changePassword);
 router.get("/changeEmail", auth.ensureAuthenticated, settingsController.changeEmail);
 router.get("/changeAbout", auth.ensureAuthenticated, settingsController.changeAbout);
-//router.post("/settings", upload.single("profilephoto"), settingsController.changePhoto);
-
-//router.get("/checkPassword", settingsController.checkPassword);
+router.post("/photo", upload.single("profilephoto"), settingsController.changePhoto);
 
 
 router.get("/login", loginCont.getLogin);
