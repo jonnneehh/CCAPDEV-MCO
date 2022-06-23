@@ -87,16 +87,13 @@ body {
     font-size: .8rem;
 }
 
-#user {
-    margin-bottom: 1.2rem;
-}
-
 .button_section {
-    float: right;
     padding-top: 1rem;
 }
 
+
 .button_section button {
+    float: right;
     width: 156px;
     height: 36px;
     border-radius: 5px;
@@ -110,9 +107,30 @@ body {
     transition: 0.2s all;
 }
 
-#peepo_account > div, #information > div {
-    height: 460px;
+#information > div {
+    height: 440px;
 }
+
+#peepo_account > div {
+    height: 550px;
+}
+
+#profile_picture > div {
+    height: 400px;
+}
+
+#profile_picture {
+    padding-bottom: 5rem;
+}
+
+#username-button {
+    margin-bottom: 4rem;
+}
+
+#save-password {
+    margin-top: .5rem;
+}
+
 
 #about {
     height: 210px;
@@ -124,6 +142,15 @@ body {
     height: 150px;
     width: 150px;
     border: black;
+}
+
+.display_info {
+    padding-top: 2rem;
+}
+
+#dp_upload {
+    height: fit-content;
+    margin-bottom: 2rem;
 }
 
 #success {
