@@ -1,6 +1,7 @@
 import db from "../models/db.js";
 import User from "../models/UserSchema.js";
 import Post from "../models/PostModel.js";
+import Comment from "../models/CommentsSchema.js";
 import bcrypt from "bcrypt";
 
 const settingsController = {
@@ -10,33 +11,43 @@ const settingsController = {
     },
 
     changeUsername: function(req, res, next){ 
-        let user = {username: req.user.username};
-        let newuser = {username: req.body.username};
 
-        db.findOne(User, newuser, {}, function (result) {
+        // Check if username is already taken
+        db.findOne(User, {username: req.body.username}, {}, function (result) {
             if (!result) {
+                // If username field is not taken and not empty, updates username
                 if (req.body.username != "") {
-                    db.updateOne(User, user, newuser, function(result2){
-                        db.findMany(Post, {poster: req.user.username}, {}, function () {
+                    db.updateOne(User, {username: req.user.username}, {username: req.body.username}, function () {
+                        // Check if user has any posts and then update them to match username
+                        db.findMany(Post, {poster: req.user.username}, {}, function (result2) {
                             if (result2) {
                                 db.updateMany(Post, {poster: req.user.username}, {poster: req.body.username}, function () {
-                                    req.flash("success_msg", "Username successfully changed");
-                                    res.redirect("/settings");
+                                    return;
                                 })
                             }
                         })
+                        // Check if user has any comments and then update them to match username
+                        db.findMany(Comment, {commentOwner: req.user.username}, {}, function (result3) {
+                            if (result3) {
+                                db.updateMany(Comment, {commentOwner: req.user.username}, {commentOwner: req.body.username}, function () {
+                                    return;
+                                })
+                            }
+                        })
+
+                        req.flash("success_msg", "Username successfully changed");
+                        res.redirect("/settings");
                     })
                 }
             }
             else {
-                req.flash("error", "Username entered was taken")
+                req.flash("error", "Username entered was taken.");
                 res.redirect("/settings");
             }
-        }) 
-           
+        })
     },
 
-    changePassword: function (req, res, next) {
+    changePassword: function (req, res) {
         let currentPw = req.body.password;
         let newPw = req.body.newpword;
         let confirm_newPw = req.body.cnewpword;
@@ -101,19 +112,26 @@ const settingsController = {
     },
 
     changePhoto: async function (req, res) {
-        let user = {username: req.user.username};
-        let photo = {profilephoto: req.file.filename};
 
-        db.updateOne(User, user, photo, function (result) {
+        // Updates user's profile pic
+        db.updateOne(User, {username: req.user.username}, {profilephoto: req.file.filename}, function () {
+            // Updates user's posts to match updated prof pic
             db.updateMany(Post, {poster: req.user.username}, {posterDP: req.file.filename}, function () {
-                //console.log(result);
-                req.flash("success_msg", "Profile picture successfully changed");
-                res.redirect("/settings");
+                return;
             })
+            // Updates user's comments to match updated prof pic
+            db.updateMany(Comment, {commentOwner: req.user.username}, {commentOwnerDP: req.file.filename}, function () {
+                return;
+            })
+
+            //console.log(result);
+            req.flash("success_msg", "Profile picture successfully changed");
+            res.redirect("/settings");
         })
 
     }
     
 }
+
 
 export default settingsController;
