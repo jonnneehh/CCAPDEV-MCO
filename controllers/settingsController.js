@@ -13,31 +13,27 @@ const settingsController = {
         let user = {username: req.user.username};
         let newuser = {username: req.body.username};
 
-        if (req.body.username == "") {
-            next();
-        }
-        else {
-            db.findOne(User, newuser, {}, function (result) {
-                if (!result) {
-                    if (req.body.username != "") {
-                        db.updateOne(User, user, newuser, function(result2){
-                            db.findMany(Post, {poster: req.user.username}, {}, function () {
-                                if (result2) {
-                                    db.updateMany(Post, {poster: req.user.username}, {poster: req.body.username}, function () {
-                                        req.flash("success_msg", "Username successfully changed");
-                                        res.redirect("/settings");
-                                    })
-                                }
-                            })
+        db.findOne(User, newuser, {}, function (result) {
+            if (!result) {
+                if (req.body.username != "") {
+                    db.updateOne(User, user, newuser, function(result2){
+                        db.findMany(Post, {poster: req.user.username}, {}, function () {
+                            if (result2) {
+                                db.updateMany(Post, {poster: req.user.username}, {poster: req.body.username}, function () {
+                                    req.flash("success_msg", "Username successfully changed");
+                                    res.redirect("/settings");
+                                })
+                            }
                         })
-                    }
+                    })
                 }
-                else {
-                    req.flash("error", "Username entered was taken")
-                    res.redirect("/settings");
-                }
-            }) 
-        }   
+            }
+            else {
+                req.flash("error", "Username entered was taken")
+                res.redirect("/settings");
+            }
+        }) 
+           
     },
 
     changePassword: function (req, res, next) {
@@ -45,42 +41,37 @@ const settingsController = {
         let newPw = req.body.newpword;
         let confirm_newPw = req.body.cnewpword;
 
-        if (currentPw == "" && newPw == "" && confirm_newPw == "") {
-            next();
+        if (!currentPw || !newPw || !confirm_newPw) {
+            req.flash("error", "All password fields must be filled to change password.");
+            res.redirect("/settings");
+        }
+        else if (newPw !== confirm_newPw) {
+            req.flash("error", "New passwords did not match.");
+            res.redirect("/settings");
         }
         else {
-            if (!currentPw || !newPw || !confirm_newPw) {
-                req.flash("error", "All password fields must be filled to change password.");
-                res.redirect("/settings");
-            }
-    
-            if (newPw !== confirm_newPw) {
-                req.flash("error", "New passwords did not match.");
-                res.redirect("/settings");
-            }
-            else {
-                User.findOne({username: req.user.username}).then(function (user) {
-                    bcrypt.compare(currentPw, user.password, function (err, isMatch) {
-                        if (err) throw err;
-                        if (isMatch) {
-                            bcrypt.genSalt(10, function (err, salt) {
-                                bcrypt.hash(newPw, salt, function (err, hash) {
-                                    if (err) throw err;
-                                    user.password = hash;
-                                    user.save();
-                                })
-                            });
-                            req.flash("success_msg", "Password successfully changed.");
-                            res.redirect("/settings");
-                        }
-                        else {
-                            req.flash("error", "Current password did not match.");
-                            res.redirect("/settings");
-                        }
-                    })
+            User.findOne({username: req.user.username}).then(function (user) {
+                bcrypt.compare(currentPw, user.password, function (err, isMatch) {
+                    if (err) throw err;
+                    if (isMatch) {
+                        bcrypt.genSalt(10, function (err, salt) {
+                            bcrypt.hash(newPw, salt, function (err, hash) {
+                                if (err) throw err;
+                                user.password = hash;
+                                user.save();
+                            })
+                        });
+                        req.flash("success_msg", "Password successfully changed.");
+                        res.redirect("/settings");
+                    }
+                    else {
+                        req.flash("error", "Current password did not match.");
+                        res.redirect("/settings");
+                    }
                 })
-            }
+            })
         }
+        
     },
 
     changeEmail: function(req, res){
@@ -100,8 +91,12 @@ const settingsController = {
         const bio = {bio: req.query.bio};
 
         db.updateOne(User, user, bio, function(result){
-            if(result) res.send(true);
-            else res.send(false);
+            if (result)
+                res.send(true);
+            
+            else 
+                res.send(false);
+            
         })
     },
 
@@ -110,26 +105,14 @@ const settingsController = {
         let photo = {profilephoto: req.file.filename};
 
         db.updateOne(User, user, photo, function (result) {
-            console.log(result);
-            res.redirect("/settings");
+            db.updateMany(Post, {poster: req.user.username}, {posterDP: req.file.filename}, function () {
+                //console.log(result);
+                req.flash("success_msg", "Profile picture successfully changed");
+                res.redirect("/settings");
+            })
         })
 
     }
-
-    
-
-    /*checkPassword: function(req, res){
-        const user = {username: req.user.username};
-        const pword = {password: req.query.password};
-
-        const finduser = Object.assign(user, pword);
-        console.log(finduser);
-
-        db.findOne(User, finduser, {}, function(result){
-            if(result) res.send(true);
-            else res.send(false);
-        })
-    }*/
     
 }
 
