@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    $("#addcomment").click(function(){
-        var comment = $("#add-comment").val();
+    $('.comment-container').on('click', '#addcomment', function (e){
+        var comment = $(this).closest("form").children("textarea");
         var iconsrc = "images/u-profile.png";
         
         var commentdata = {
             commentOwnerDP: iconsrc,
-            content: comment,
+            content: comment.val(),
             postOwner: $(this).parents(".post-container").attr("id")
         }
         
@@ -13,7 +13,7 @@ $(document).ready(function(){
             return;
         }
         
-        $("#add-comment").val("");
+        comment.val("");
         
         console.log(commentdata);
 
@@ -23,15 +23,15 @@ $(document).ready(function(){
             $.get('/addComment', commentdata, function(data, status){
                 $("#" + commentdata.postOwner +" .comments-section").append(data);
             })
-        }
+        } 
     })
 
-    $("#cancelcomment").click(function(){
-        console.log("The comment was cancelled");
-        $("#add-comment").val("");
+    $('.comment-container').on('click', '#cancelcomment', function (e){
+        console.log("Cancelling comment...")
+        $(this).closest("form").children("textarea").val("");
     })
 
-    $(".upvote").click(function(){
+    $(".upvote").click(function(){ 
         var color = $(this).css("color");
         var siblingcolor = $(this).siblings('.downvote').css("color");
         const black = "rgb(38, 38, 38)";

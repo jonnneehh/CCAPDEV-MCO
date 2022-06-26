@@ -228,6 +228,11 @@ img.post-body {
 	color: #003469;
 }
 
+.user-info {
+	margin-top: 0.7rem;
+	margin-left: 0.3rem;
+}
+
 .user-info a {
 	text-decoration: none;
 	color: black;

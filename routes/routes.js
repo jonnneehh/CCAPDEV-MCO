@@ -32,7 +32,6 @@ router.get("/changeEmail", auth.ensureAuthenticated, settingsController.changeEm
 router.get("/changeAbout", auth.ensureAuthenticated, settingsController.changeAbout);
 router.post("/photo", upload.single("profilephoto"), settingsController.changePhoto);
 
-
 router.get("/login", loginCont.getLogin);
 router.post("/login", loginCont.loginUser);
 router.get("/logout", auth.ensureAuthenticated, loginCont.logoutUser);
