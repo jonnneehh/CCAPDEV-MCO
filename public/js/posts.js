@@ -1,23 +1,22 @@
 $(document).ready(function(){
+
     $('.comment-container').on('click', '#addcomment', function (e){
         var comment = $(this).closest("form").children("textarea");
-        var iconsrc = "images/u-profile.png";
         
         var commentdata = {
-            commentOwnerDP: iconsrc,
             content: comment.val(),
             postOwner: $(this).parents(".post-container").attr("id")
         }
         
-        if(comment == ""){
-            return;
-        }
+        if(comment == "") {return};
         
         comment.val("");
-        
-        console.log(commentdata);
 
-        addComment(commentdata);
+        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
+            console.log(commentdata);
+            addComment(commentdata);
+        }
+        
 
         function addComment(commentdata){
             $.get('/addComment', commentdata, function(data, status){
@@ -36,20 +35,22 @@ $(document).ready(function(){
         var siblingcolor = $(this).siblings('.downvote').css("color");
         const black = "rgb(38, 38, 38)";
         const blue = "rgb(0, 0, 255)";
-        
-        if(siblingcolor != black){
-            $(this).siblings('.downvote').css("color", black);
-            addUpvote(this)
-        }
-        if(color == black){
-            addUpvote(this)
-            $(this).css("color", blue)
-        }
-        else{
-            removeUpvote(this);
-            $(this).css("color", black)
-        }
 
+        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
+            if(siblingcolor != black){
+                $(this).siblings('.downvote').css("color", black);
+                addUpvote(this)
+            }
+            if(color == black){
+                addUpvote(this)
+                $(this).css("color", blue)
+            }
+            else{
+                removeUpvote(this);
+                $(this).css("color", black)
+            }
+        }
+        
         function addUpvote(upvote){
             var like = $(upvote).siblings('.likes').text();
             $(upvote).siblings('.likes').text(parseInt(like) + 1);
@@ -95,20 +96,23 @@ $(document).ready(function(){
         const black = "rgb(38, 38, 38)";
         const red = "rgb(255, 0, 0)";
         
-        if(siblingcolor != black){
-            $(this).siblings('.upvote').css("color", black);
-            addDownvote(this);
-        }
 
-        if(color == black){
-            addDownvote(this)
-            $(this).css("color", red)
+        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
+            if(siblingcolor != black){
+                $(this).siblings('.upvote').css("color", black);
+                addDownvote(this);
+            }
+    
+            if(color == black){
+                addDownvote(this)
+                $(this).css("color", red)
+            }
+            else{
+                removeDownvote(this);
+                $(this).css("color", black)
+            }
         }
-        else{
-            removeDownvote(this);
-            $(this).css("color", black)
-        }
-
+        
         function removeDownvote(downvote){
             var like = $(downvote).siblings('.likes').text();
             $(downvote).siblings('.likes').text(parseInt(like) + 1);
