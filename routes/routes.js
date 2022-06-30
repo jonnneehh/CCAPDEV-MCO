@@ -6,6 +6,7 @@ import controller from "../controllers/controller.js";
 import postController from "../controllers/postController.js";
 import settingsController from '../controllers/settingsController.js';
 import profileController from "../controllers/profileController.js";
+import upvoteController from "../controllers/upvoteController.js";
 
 import loginCont from '../controllers/loginController.js'
 import registerCont from '../controllers/registerController.js'
@@ -18,10 +19,10 @@ router.get('/', controller.getIndex);
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
 router.get("/addComment", postController.addComment);
-router.get("/addUpvote", postController.addUpvote);
-router.get("/removeUpvote", postController.removeUpvote);
-router.get("/addDownvote", postController.addDownvote);
-router.get("/removeDownvote", postController.removeDownvote);
+router.get("/addUpvote", upvoteController.addUpvote);
+router.get("/removeUpvote", upvoteController.removeUpvote);
+router.get("/addDownvote", upvoteController.addDownvote);
+router.get("/removeDownvote", upvoteController.removeDownvote);
 
 router.get("/profile/:username", auth.ensureAuthenticated, profileController.getUserProfile);
 

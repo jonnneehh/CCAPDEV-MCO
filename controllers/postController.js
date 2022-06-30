@@ -95,6 +95,7 @@ const postController = {
                         upvotedPosts: newUpvotedPosts
                     }
 
+                    //Add post to upvotedPosts of user
                     db.updateOne(User, {username: req.user.username}, posts, (status)=>{
                         if(status){
                             console.log("New post added to upvotedPosts of user");
@@ -107,8 +108,6 @@ const postController = {
                             console.log("Update failed...")
                         }
                     })
-
-                    //If the post is part of User.downvotedPosts, remove it
                 } 
                 else{
                     console.log("This post was already upvoted! cancelling update...")
