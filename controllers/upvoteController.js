@@ -29,7 +29,7 @@ const upvoteController = {
             await add(Comment, false, id, username, likes);
         }
     },
-
+    
     removeUpvote: async function (req, res) {
         var id = req.query._id;
         var username = req.user.username;

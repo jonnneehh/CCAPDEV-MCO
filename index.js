@@ -19,23 +19,33 @@ passportconfig(passport);
 
 db.connect();
 
-app.engine( "hbs",
-    exphbs.engine({
-        extname: "hbs",
-        runtimeOptions: {
-            allowProtoPropertiesByDefault: true,
-            allowProtoMethodsByDefault: true
+const hbs = exphbs.create({
+    extname: "hbs",
+    runtimeOptions: {
+        allowProtoPropertiesByDefault: true,
+        allowProtoMethodsByDefault: true
+    },
+    helpers: {
+        blue: function(isUpvoted){
+            if(isUpvoted) return "rgb(0, 0, 255)"
+            else return "rgb(38, 38, 38)"
+        },
+        red: function (isDownvoted){
+            if(isDownvoted) return "rgb(255, 0, 0)"
+            else return "rgb(38, 38, 38)"
         }
-    })
-);
+    } 
+})
+
+app.engine("hbs", hbs.engine);
 
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
 app.use(express.static(`public`));
 
-// Allows use of req.body
-app.use(express.urlencoded({extended: false}));
+// Allows use of req.body 
+app.use(express.urlencoded({extended: false}));  
 
 
 // For express sessions

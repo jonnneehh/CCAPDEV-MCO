@@ -9,9 +9,9 @@
     </div>
 
     <div class="comment-action">
-        <span class="upvote"><i class="fa-solid fa-chevron-up fa-lg"></i></span>
+        <span class="upvote" style = "color:{{blue isUpvoted}}"><i class="fa-solid fa-chevron-up fa-lg"></i></span>
         <span class="likes"> {{likes}} </span>
-        <span class="downvote"><i class="fa-solid fa-chevron-down fa-lg"></i></span>
+        <span class="downvote" style = "color:{{red isDownvoted}}"><i class="fa-solid fa-chevron-down fa-lg"></i></span>
     </div>
 
     {{#each replies}}

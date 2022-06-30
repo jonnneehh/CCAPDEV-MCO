@@ -38,16 +38,16 @@ $(document).ready(function(){
 
         if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
             if(siblingcolor != black){
-                $(this).siblings('.downvote').css("color", black);
+                $(this).siblings('.downvote').attr("style", "color: " + black);
                 addUpvote(this)
             }
             if(color == black){
                 addUpvote(this)
-                $(this).css("color", blue)
+                $(this).attr("style", "color: " + blue)
             }
             else{
                 removeUpvote(this);
-                $(this).css("color", black)
+                $(this).attr("style", "color: " + black)
             }
         }
         
@@ -59,7 +59,7 @@ $(document).ready(function(){
             var parent = getParent(upvote);
             var isAPost = isPost(parent);
 
-            var likes = {
+            var likes = { 
                 _id: parent.attr("id"),
                 likes: $(upvote).siblings('.likes').text(),
                 isPost: isAPost
@@ -84,32 +84,32 @@ $(document).ready(function(){
                 isPost: isAPost
             }
 
-            console.log(likes);
+            console.log(likes); 
             
             $.get("/removeUpvote", likes, function(data, status){})
         }
     })
 
-    $(".downvote").click(function(){
+    $(".downvote").click(function(){ 
         var color = $(this).css("color");
-        var siblingcolor = $(this).siblings('.upvote').css("color");
+        var siblingcolor = $(this).siblings('.upvote').css("color"); 
         const black = "rgb(38, 38, 38)";
         const red = "rgb(255, 0, 0)";
         
 
         if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
             if(siblingcolor != black){
-                $(this).siblings('.upvote').css("color", black);
+                $(this).siblings('.upvote').attr("style", "color: " + black)
                 addDownvote(this);
             }
     
             if(color == black){
                 addDownvote(this)
-                $(this).css("color", red)
+                $(this).attr("style", "color: " + red)
             }
             else{
                 removeDownvote(this);
-                $(this).css("color", black)
+                $(this).attr("style", "color: " + black)
             }
         }
         
