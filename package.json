@@ -13,8 +13,8 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16",
-    "@types/jquery": "^3.5.14"
+    "@types/jquery": "^3.5.14",
+    "nodemon": "^2.0.18"
   },
   "name": "ccapdev-mco",
   "description": "",
