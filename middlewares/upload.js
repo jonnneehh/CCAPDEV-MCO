@@ -23,13 +23,12 @@ const upload = multer({
                 callback(null, true);
             }
         else {
-            console.log("Only JPG/JPEG or PNG allowed.");
             callback(null, false);
         }
     },
     limits: {
-        fileSize: 1024 * 1024 * 3
-    }
+        fileSize: 1024 * 1024 * 3 // 3mb max size
+    } 
 });
 
 export default upload;
