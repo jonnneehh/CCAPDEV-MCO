@@ -3,6 +3,8 @@ import User from "../models/UserSchema.js";
 import Post from "../models/PostModel.js";
 import Comment from "../models/CommentsSchema.js";
 import bcrypt from "bcrypt";
+import multer from "multer";
+import upload from "../middlewares/upload.js";
 
 const settingsController = {
     
@@ -112,22 +114,35 @@ const settingsController = {
     },
 
     changePhoto: async function (req, res) {
+        let photoUpload = upload.single("profilephoto");
 
-        // Updates user's profile pic
-        db.updateOne(User, {username: req.user.username}, {profilephoto: req.file.filename}, function () {
-            // Updates user's posts to match updated prof pic
-            db.updateMany(Post, {poster: req.user.username}, {posterDP: req.file.filename}, function () {
-                return;
-            })
-            // Updates user's comments to match updated prof pic
-            db.updateMany(Comment, {commentOwner: req.user.username}, {commentOwnerDP: req.file.filename}, function () {
-                return;
-            })
+        photoUpload(req, res, function (err) {
+            console.log(req.file);
 
-            //console.log(result);
-            req.flash("success_msg", "Profile picture successfully changed");
-            res.redirect("/settings");
+            if (req.file == undefined || req.file.filename == undefined || err || err instanceof multer.MulterError) {
+                console.log(err);
+                req.flash("error", "Failed to change profile photo. Please select the correct file type and size. (jpg, jpeg, png, and gif. Max size 3mb)");
+                res.redirect("/settings");
+            }
+            else {
+                // Updates user's profile pic
+                db.updateOne(User, {username: req.user.username}, {profilephoto: req.file.filename}, function () {
+                    // Updates user's posts to match updated prof pic
+                    db.updateMany(Post, {poster: req.user.username}, {posterDP: req.file.filename}, function () {
+                        return;
+                    })
+                    // Updates user's comments to match updated prof pic
+                    db.updateMany(Comment, {commentOwner: req.user.username}, {commentOwnerDP: req.file.filename}, function () {
+                        return;
+                    })
+
+                    //console.log(result);
+                    req.flash("success_msg", "Profile picture successfully changed");
+                    res.redirect("/settings");
+                })
+            }
         })
+        
 
     }
     
