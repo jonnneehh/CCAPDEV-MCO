@@ -22,6 +22,12 @@ header {
     float: left;
 }
 
+@media (max-width: 690px) {
+    .logo img {
+        display: none;
+    } 
+}
+
 .nav_btns {
     float: right;
     height: 48px;
@@ -80,8 +86,4 @@ header {
     }
 }
 
-@media (max-width: 673px) {
-    .logo img {
-        display: none;
-    }
-}
+
