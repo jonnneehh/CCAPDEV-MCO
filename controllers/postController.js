@@ -2,27 +2,42 @@ import db from "../models/db.js";
 import User from "../models/UserSchema.js";
 import Post from "../models/PostModel.js";
 import Comment from "../models/CommentsSchema.js"
+import multer from "multer";
+import upload from "../middlewares/upload.js";
 
 const postController = {
 
     postPost: async function (req, res) {
-        //console.log(req.file);
-        //console.log(req.body);
-        let data = {
-           poster: req.user.username,
-           caption: req.body.caption, 
-           content: req.file.filename
-           //layout: false
-        }
-        
-        db.insertOne(Post, data, function (result) {
-            db.findOne(User, {username: req.user.username}, {}, function () {
-                db.updateOne(User, {username: req.user.username}, {$inc: {posts: 1}}, function () {
-                    //console.log(result);
-                    res.redirect("/");
+        let postUpload = upload.single("content");
+
+        postUpload(req, res, function (err) {
+            console.log(req.file);
+            //console.log(req.body);
+
+            if (req.file == undefined || req.file.filename == undefined || err || err instanceof multer.MulterError) {
+                console.log(err);
+                req.flash("error", "Failed to upload file. Please select the correct file type and size. (jpg, jpeg, png, and gif. Max size 3mb)");
+                res.redirect("/addpost");
+            }
+            else {
+                let data = {
+                    poster: req.user.username,
+                    posterDP: req.user.profilephoto,
+                    caption: req.body.caption, 
+                    content: req.file.filename
+                }
+                
+                db.insertOne(Post, data, function (result) {
+                    db.findOne(User, {username: req.user.username}, {}, function () {
+                        db.updateOne(User, {username: req.user.username}, {$inc: {posts: 1}}, function () {
+                            //console.log(result);
+                            res.redirect("/");
+                        })
+                    }) 
                 })
-            }) 
+            }
         })
+        
     },
 
     getPost: function (req, res) {
