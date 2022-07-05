@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $(".post-container").on("click", function (e) { 
-        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) != "LOG OUT")
+        if (($("body").find(".nav_btns").children(":nth-child(4)").text()) != "LOG OUT")
             e.preventDefault();
 
         $("#interact_modal").show();
