@@ -5,54 +5,62 @@ import Comment from "../models/CommentsSchema.js"
 
 const upvoteController = {
     addUpvote: async function (req, res) {
-        var id = req.query._id;
-        var username = req.user.username;
-        var likes = req.query.likes;
+        if (req.user) {
+            var id = req.query._id;
+            var username = req.user.username;
+            var likes = req.query.likes;
 
-        if (isPost(req.query.isPost)) {
-            await add(Post, true, id, username, likes);
-        }
-        else {
-            await add(Comment, true, id, username, likes);
-        }
+            if (isPost(req.query.isPost)) {
+                await add(Post, true, id, username, likes);
+            }
+            else {
+                await add(Comment, true, id, username, likes);
+            }
+        }  
     }, 
 
     addDownvote: async function (req, res) {
-        var id = req.query._id;
-        var username = req.user.username;
-        var likes = req.query.likes;
+        if (req.user) {
+            var id = req.query._id;
+            var username = req.user.username;
+            var likes = req.query.likes;
 
-        if (isPost(req.query.isPost)) {
-            await add(Post, false, id, username, likes);
-        }
-        else {
-            await add(Comment, false, id, username, likes);
+            if (isPost(req.query.isPost)) {
+                await add(Post, false, id, username, likes);
+            }
+            else {
+                await add(Comment, false, id, username, likes);
+            }
         }
     },
     
     removeUpvote: async function (req, res) {
-        var id = req.query._id;
-        var username = req.user.username;
-        var likes = req.query.likes;
+        if (req.user) {
+            var id = req.query._id;
+            var username = req.user.username;
+            var likes = req.query.likes;
 
-        if (isPost(req.query.isPost)) {
-            await remove(Post, true, id, username, likes);
-        }
-        else {
-            await remove(Comment, true, id, username, likes);
+            if (isPost(req.query.isPost)) {
+                await remove(Post, true, id, username, likes);
+            }
+            else {
+                await remove(Comment, true, id, username, likes);
+            }
         }
     },
 
     removeDownvote: async function (req, res) {
-        var id = req.query._id;
-        var username = req.user.username;
-        var likes = req.query.likes;
+        if (req.user) {
+            var id = req.query._id;
+            var username = req.user.username;
+            var likes = req.query.likes;
 
-        if (isPost(req.query.isPost)) {
-            await remove(Post, false, id, username, likes);
-        }
-        else {
-            await remove(Comment, false, id, username, likes);
+            if (isPost(req.query.isPost)) {
+                await remove(Post, false, id, username, likes);
+            }
+            else {
+                await remove(Comment, false, id, username, likes);
+            }
         }
     }, 
 } 
