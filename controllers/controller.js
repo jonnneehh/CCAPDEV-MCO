@@ -11,9 +11,9 @@ const controller = {
     },
 
     getIndex: async function (req, res) {
-        var user = await user();
+        //var user = await user();
 
-        console.log("User found! " + user); 
+        //console.log("User found! " + user); 
 
         db.findManyToJSON(Post, {}, null, async function (res_posts) {
             for(let post of res_posts){
@@ -25,11 +25,11 @@ const controller = {
                         isUpvoted: false,
                         isDownvoted: false
                     }
-                    if(user){
-                        if(user.upvotedComments.includes(commentid)){
+                    if(req.user){
+                        if(req.user.upvotedComments.includes(commentid)){
                             votedata.isUpvoted = true;
                         }
-                        else if(user.downvotedComments.includes(commentid)){
+                        else if(req.user.downvotedComments.includes(commentid)){
                             votedata.isDownvoted = true;
                         }
                     }
@@ -45,11 +45,11 @@ const controller = {
                     isUpvoted: false,
                     isDownvoted: false
                 }
-                if(user){
-                    if(user.upvotedPosts.includes(post._id)){
+                if(req.user){
+                    if(req.user.upvotedPosts.includes(post._id)){
                         votedata.isUpvoted = true;
                     }
-                    else if(user.downvotedPosts.includes(post._id)){
+                    else if(req.user.downvotedPosts.includes(post._id)){
                         votedata.isDownvoted = true;
                     }
                 }
@@ -68,7 +68,7 @@ const controller = {
             }) 
         }
 
-        function user(){
+        /*function user(){
             return new Promise((resolve, reject) =>{
                 try{
                     var user;
@@ -90,7 +90,7 @@ const controller = {
                     console.error(e);
                 }
             })
-        }
+        }*/
     }
 }
 export default controller;
