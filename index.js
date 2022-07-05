@@ -1,4 +1,4 @@
-import "dotenv/config";
+//import "dotenv/config";
 
 import express from "express";
 import exphbs from "express-handlebars";
@@ -9,7 +9,9 @@ import passport from "passport";
 import flash from "connect-flash";
 import session from "express-session";
 
-const port = process.env.PORT || 3000;
+import { envPort, sessionKey } from './config.js';
+
+const port = envPort || 3000;
 
 const app = express();
 
@@ -50,7 +52,7 @@ app.use(express.urlencoded({extended: false}));
 
 // For express sessions
 app.use(session({
-    secret: "wenkwonk",
+    secret: sessionKey,
     resave: true,
     saveUninitialized: true
 }));
@@ -73,13 +75,10 @@ app.use( function (req, res, next) {
 })
 
 app.use(`/`, routes);
-/** 
+
 app.listen(port, function () {
     console.log(`Server is running at:`);
     console.log(`http://localhost:` + port);
 })
-*/
 
-app.listen(process.env.PORT || 3000, function() {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
+
