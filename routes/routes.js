@@ -33,7 +33,7 @@ router.post("/username", auth.ensureAuthenticated, settingsController.changeUser
 router.post("/password", auth.ensureAuthenticated, settingsController.changePassword);
 router.get("/changeEmail", auth.ensureAuthenticated, settingsController.changeEmail);
 router.get("/changeAbout", auth.ensureAuthenticated, settingsController.changeAbout);
-router.post("/photo", upload.single("profilephoto"), settingsController.changePhoto);
+router.post("/photo", settingsController.changePhoto);
 
 router.get("/login", loginCont.getLogin);
 router.post("/login", loginCont.loginUser);
