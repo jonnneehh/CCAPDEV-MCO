@@ -8,6 +8,10 @@
                 <a href="/register">SIGN UP</a>
                 <a href="/login">LOG IN</a>
             {{else}}
+                <div class="search">
+                    <label for="user"> Search Username: </label>
+                    <input type="text" name="search" id="search_bar"/>
+                </div>
                 <a href="/profile/{{user.username}}">PROFILE</a>
                 <a href="/settings">SETTINGS</a>
                 <a href="/logout">LOG OUT</a>

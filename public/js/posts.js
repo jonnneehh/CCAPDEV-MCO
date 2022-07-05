@@ -12,7 +12,7 @@ $(document).ready(function(){
         
         comment.val("");
 
-        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
+        if (($("body").find(".nav_btns").children(":nth-child(4)").text()) == "LOG OUT") {
             console.log(commentdata);
             addComment(commentdata);
         }
@@ -36,7 +36,7 @@ $(document).ready(function(){
         const black = "rgb(38, 38, 38)";
         const blue = "rgb(0, 0, 255)";
 
-        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
+        if (($("body").find(".nav_btns").children(":nth-child(4)").text()) == "LOG OUT") {
             if(siblingcolor != black){
                 $(this).siblings('.downvote').attr("style", "color: " + black);
                 addUpvote(this)
@@ -97,7 +97,7 @@ $(document).ready(function(){
         const red = "rgb(255, 0, 0)";
         
 
-        if (($("body").find(".nav_btns").children(":nth-child(3)").text()) == "LOG OUT") {
+        if (($("body").find(".nav_btns").children(":nth-child(4)").text()) == "LOG OUT") {
             if(siblingcolor != black){
                 $(this).siblings('.upvote').attr("style", "color: " + black)
                 addDownvote(this);

@@ -10,6 +10,7 @@ import upvoteController from "../controllers/upvoteController.js";
 
 import loginCont from '../controllers/loginController.js'
 import registerCont from '../controllers/registerController.js'
+import searchController from "../controllers/searchController.js";
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router.get('/', controller.getIndex);
 router.post("/addpost", upload.single("content"), postController.postPost);
 router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
 router.get("/addComment", postController.addComment);
+
 router.get("/addUpvote", upvoteController.addUpvote);
 router.get("/removeUpvote", upvoteController.removeUpvote);
 router.get("/addDownvote", upvoteController.addDownvote);
@@ -41,4 +43,5 @@ router.get("/register", registerCont.getRegister);
 router.post("/register", registerCont.addUser);
 router.get("/findUser", registerCont.findUser);
 
+router.get("/searchUser", searchController.searchUser);
 export default router;
