@@ -17,7 +17,7 @@ const router = Router();
 router.get('/favicon.ico', controller.getFavicon);
 router.get('/', controller.getIndex);
 
-router.post("/addpost", upload.single("content"), postController.postPost);
+router.post("/addpost", postController.postPost);
 router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
 router.get("/addComment", postController.addComment);
 
