@@ -8,7 +8,7 @@ const profileController = {
     getUserProfile: async function (req, res) {
         var user = await user();
         db.findOne(User, {username: req.params.username}, {}, function (userinfo) {
-            db.findManyToJSON(Post, {}, null, async function (res_posts) {
+            db.findManyToJSON(Post, {poster: req.params.username}, null, async function (res_posts) {
                 for(let post of res_posts){
                     //Add the comments for each post
                     var commentsdata = [];
