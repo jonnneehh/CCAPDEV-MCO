@@ -18,13 +18,13 @@ router.get('/favicon.ico', controller.getFavicon);
 router.get('/', controller.getIndex);
 
 router.post("/addpost", postController.postPost);
-router.get("/addpost", auth.ensureAuthenticated , postController.getPost);
+router.get("/addpost", auth.ensureAuthenticated, postController.getPost);
 router.get("/addComment", postController.addComment);
 
-router.get("/addUpvote", upvoteController.addUpvote);
-router.get("/removeUpvote", upvoteController.removeUpvote);
-router.get("/addDownvote", upvoteController.addDownvote);
-router.get("/removeDownvote", upvoteController.removeDownvote);
+router.get("/addUpvote", auth.ensureAuthenticated, upvoteController.addUpvote);
+router.get("/removeUpvote", auth.ensureAuthenticated, upvoteController.removeUpvote);
+router.get("/addDownvote", auth.ensureAuthenticated, upvoteController.addDownvote);
+router.get("/removeDownvote", auth.ensureAuthenticated, upvoteController.removeDownvote);
 
 router.get("/profile/:username", auth.ensureAuthenticated, profileController.getUserProfile);
 
