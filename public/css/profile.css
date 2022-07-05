@@ -26,17 +26,25 @@ body {
 }
 
 .col_left{
-    width:20%;
+    width:40%;
 }
 
-/*This bugs out if you zoom in*/
 #displayphoto{
-    height: 250px;
-    width: 250px;
+    height: 15rem;
+    width: 15rem;
 }
+
+@media (max-width: 715px) {
+    #displayphoto{
+        margin-top: 4rem;
+        height: 8rem;
+        width: 8rem;
+    }
+}
+
 
 .col_right{
-    width:80%;
+    width: 80%;
 }
 
 .interactables{
