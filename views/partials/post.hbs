@@ -8,6 +8,13 @@
                 <a href="/profile/{{poster}}" class="username">{{poster}}</a>
             </div>
         </div>
+
+        {{#ifeq poster username}}
+            <form id="delete-form" action="/deletePost" method="POST">
+                <button id="deletepost"> DELETE </button>
+            </form>
+        {{/ifeq}}
+
     </div>
    
     <div class="description-card">
@@ -44,3 +51,4 @@
         </form>
     </div>
 </div>
+
