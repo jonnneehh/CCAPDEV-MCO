@@ -50,7 +50,7 @@ const profileController = {
                 }   
                 // Reverses Posts array to show newer posts first
                 res_posts.reverse();
-                res.render("profile", {userinfo: userinfo, posts: res_posts});
+                res.render("profile", {userinfo: userinfo, posts: res_posts, username: req.user.username});
             })
         })
 
