@@ -11,11 +11,11 @@ const postController = {
         let postUpload = upload.single("content");
 
         postUpload(req, res, function (err) {
-            console.log(req.file);
+            //console.log(req.file);
             //console.log(req.body);
 
             if (req.file == undefined || req.file.filename == undefined || err || err instanceof multer.MulterError) {
-                console.log(err);
+                //console.log(err);
                 req.flash("error", "Failed to upload file. Please select the correct file type and size. (jpg, jpeg, png, and gif. Max size 3mb)");
                 res.redirect("/addpost");
             }
@@ -27,16 +27,23 @@ const postController = {
                     content: req.file.filename
                 }
                 
-                db.insertOne(Post, data, function (result) {
-                    db.findOne(User, {username: req.user.username}, {}, function () {
-                        db.updateOne(User, {username: req.user.username}, {$inc: {posts: 1}}, function () {
-                            //console.log(result);
-                            res.redirect("/");
-                        })
-                    }) 
+                db.insertOne(Post, data, function (newPost) { 
+                    
+                    db.findOne(User, {username: req.user.username}, {}, function (currentUser) {
+                        currentUser.posts.push(newPost);
+                        currentUser.save();
+                        console.log(currentUser.posts);
+                        res.redirect("/");
+                    })
                 })
             }
         })
+        
+    },
+
+    deletePost: function (req, res) {
+        console.log("Post deleted");
+        res.redirect("/");
         
     },
 
