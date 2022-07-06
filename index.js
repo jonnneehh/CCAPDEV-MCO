@@ -35,6 +35,10 @@ const hbs = exphbs.create({
         red: function (isDownvoted){
             if(isDownvoted) return "rgb(255, 0, 0)"
             else return "rgb(38, 38, 38)"
+        },
+        ifeq: function (a, b, options) {
+            if (a == b) { return options.fn(this);}
+            return options.inverse(this);
         }
     } 
 })
