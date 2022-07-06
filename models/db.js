@@ -82,8 +82,16 @@ const database = {
             console.log('Document deleted: ' + result.deletedCount);
             return callback(true);
         });
+    },
+    
+    findOneAndDelete(model, conditions, options, callback){
+        model.findOneAndDelete(conditions, options, function (error, result) {
+            if(error) return callback(false);
+            console.log('Document deleted: ' + result.deletedCount);
+            return callback(result);
+        });
     }
-
+    
 }
 
 export default database;

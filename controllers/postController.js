@@ -43,14 +43,22 @@ const postController = {
 
     deletePost: function (req, res) {
         var postid = req.query.postid
-        db.deleteOne(Post, {_id : postid}, function(status){
-            if(status) {
+        db.findOneAndDelete(Post, {_id : postid}, {}, async function(post){
+            if(post /** if post exists */) {
                 console.log("Successfully deleted post with id: " + postid);
+
+                //Deletes all comments from the that post
                 db.deleteMany(Comment, {postOwner: postid}, function(status){
                     if(status) console.log("Deleted all comments under postid: " + postid);
                 })
-                var user = getUser()
 
+                //Remove post from user posts
+                var user = await getUser(post.poster)
+                user.posts.pop(postid);
+
+                db.updateOne(User, {username: user.username}, {posts: user.posts}, function(status){
+                    if(status) console.log("Deleted post " + postid + " from user's posts");
+                })
                 res.send(true);
             }
             else{
@@ -60,8 +68,10 @@ const postController = {
         })
 
         function getUser(user){
-            db.findOne(User, {username: user}, function(result){
-                return result;
+            return new Promise((resolve, reject)=>{
+                db.findOne(User, {username: user}, {}, function(result){
+                    resolve(result)
+                })
             })
         }
     },
