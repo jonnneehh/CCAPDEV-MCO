@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Varela+Round&display=swap');
 
 body {
 	color: #262626;
@@ -250,4 +251,20 @@ img.post-body {
 .user-handle:active {
 	text-decoration: none;
 	color: black;
+}
+
+#deletepost {
+	display: inline-block;
+	margin-left: 27rem;
+   	border-radius: 5px;
+	border-style: none;
+	background-color: rgba(156, 165, 244, 0.46);
+   	font-family: 'Varela Round', sans-serif;
+	font-size: 12px;
+}
+
+#deletepost:hover {
+	border-color: rgb(56, 195, 255);
+    	background-color: rgba(255, 0, 34, 0.644);
+    	transition: 0.2s all;
 }
