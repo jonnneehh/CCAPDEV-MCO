@@ -16,6 +16,7 @@ div.container{
 	margin:auto;
 	margin-bottom: 1rem;
 	margin-top: 1rem;
+    justify-content: center;
 }
 
 div.npm_div {
