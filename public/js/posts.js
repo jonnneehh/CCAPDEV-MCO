@@ -159,11 +159,9 @@ $(document).ready(function(){
 
         console.log(id);
 
-        $.get("/deletePost", {postid: id}, function(data){
-            
+        $.get("/deletePost", {postid: id}, function(status){
+            if(status) parent.remove();
         })
-
-        parent.remove();
     })
 
     function getParent(vote){

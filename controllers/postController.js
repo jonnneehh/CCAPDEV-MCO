@@ -42,10 +42,28 @@ const postController = {
     },
 
     deletePost: function (req, res) {
-        db.deleteOne(Post, {postid : req.query.postid}, function(status){
-            if(status) console.log("Successfully deleted post with id: " + req.query.postid);
-            else console.log("Could not delete post");
+        var postid = req.query.postid
+        db.deleteOne(Post, {_id : postid}, function(status){
+            if(status) {
+                console.log("Successfully deleted post with id: " + postid);
+                db.deleteMany(Comment, {postOwner: postid}, function(status){
+                    if(status) console.log("Deleted all comments under postid: " + postid);
+                })
+                var user = getUser()
+
+                res.send(true);
+            }
+            else{
+                console.log("Could not delete post");
+                res.send(false);
+            }
         })
+
+        function getUser(user){
+            db.findOne(User, {username: user}, function(result){
+                return result;
+            })
+        }
     },
 
     getPost: function (req, res) {
