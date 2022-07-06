@@ -61,7 +61,9 @@ const controller = {
             }   
             // Reverses Posts array to show newer posts first
             res_posts.reverse();
-            res.render("home", {posts: res_posts})
+            
+            if (!req.user) res.render("home", {posts: res_posts});
+            else res.render("home", {posts: res_posts, username: req.user.username});
         }) 
 
         function addComment(commentid){
