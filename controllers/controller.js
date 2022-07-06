@@ -10,6 +10,10 @@ const controller = {
         res.status(204);
     },
 
+    getAbout: function(req, res){
+        res.render('about');
+    },
+
     getIndex: async function (req, res) {
         //var user = await user();
 

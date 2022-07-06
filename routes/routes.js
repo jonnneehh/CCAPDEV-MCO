@@ -39,6 +39,8 @@ router.get("/login", loginCont.getLogin);
 router.post("/login", loginCont.loginUser);
 router.get("/logout", auth.ensureAuthenticated, loginCont.logoutUser);
 
+router.get("/about", controller.getAbout);
+
 router.get("/register", registerCont.getRegister);
 router.post("/register", registerCont.addUser);
 router.get("/findUser", registerCont.findUser);
