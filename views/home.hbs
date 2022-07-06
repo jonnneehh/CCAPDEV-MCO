@@ -24,13 +24,14 @@
 {{/unless}}
 
 <div id="posts">
-    {{#if posts}}
-        {{#each posts}}
-            {{> post}}
-        {{/each}}
-    {{else}}
+    {{#each posts}}
+        {{> post username=../username}}
+    {{/each}} 
+
+    {{#unless posts}}
         <img src="/images/sad peepo.png" style="position: relative; left: 50%; transform:translateX(-50%);"/>
         <h1 style="text-align: center"> no memes found &#58;&#40; </h1>
-    {{/if}}
+    {{/unless}}
+
 </div>
 
