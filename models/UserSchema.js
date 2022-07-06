@@ -33,9 +33,10 @@ const UserSchema = new mongoose.Schema({
         default: "Welcome to my profile!"
     },
     posts: {
-        type: Number,
-        default: 0
-    }, 
+        type: [mongoose.SchemaTypes.ObjectId],
+        ref: "Post",
+        default: []
+    },
     followers: {
         type: Number,
         default: 0
