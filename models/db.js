@@ -37,7 +37,7 @@ const database = {
             return callback(result);
         });
     },
-
+ 
     findMany: function(model, query, projection, callback) {
         model.find(query, projection, function(error, result) {
             if(error) return callback(false);

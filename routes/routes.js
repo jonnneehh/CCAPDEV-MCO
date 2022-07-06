@@ -18,7 +18,7 @@ router.get('/favicon.ico', controller.getFavicon);
 router.get('/', controller.getIndex);
 
 router.post("/addpost", postController.postPost);
-router.post("/deletePost", postController.deletePost);
+router.get("/deletePost", postController.deletePost);
 router.get("/addpost", auth.ensureAuthenticated, postController.getPost);
 router.get("/addComment", postController.addComment);
 

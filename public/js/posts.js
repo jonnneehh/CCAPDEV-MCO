@@ -152,8 +152,18 @@ $(document).ready(function(){
         }
     })
 
-    $(".deletepost").click(function(){
-        $(this).parents(".post-container").remove();
+    $(".post-header").on('click', '#deletepost', function(e){
+        const parent = $(this).parents(".post-container");
+        
+        var id = parent.attr("id");
+
+        console.log(id);
+
+        $.get("/deletePost", {postid: id}, function(data){
+            
+        })
+
+        parent.remove();
     })
 
     function getParent(vote){

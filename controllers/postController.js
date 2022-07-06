@@ -42,9 +42,10 @@ const postController = {
     },
 
     deletePost: function (req, res) {
-        console.log("Post deleted");
-        res.redirect("/");
-        
+        db.deleteOne(Post, {postid : req.query.postid}, function(status){
+            if(status) console.log("Successfully deleted post with id: " + req.query.postid);
+            else console.log("Could not delete post");
+        })
     },
 
     getPost: function (req, res) {
